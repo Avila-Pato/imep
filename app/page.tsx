@@ -10,27 +10,17 @@ export default function Home() {
   // Efecto para las imagenes
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.from(
+    tl.fromTo(
       ".shape",
-      {
-        y: 200,
-        opacity: 0,
-        scale: 1.2,
-        duration: 1.8,
-        ease: "back.inOut(1.7)",
-      },
+      { y: 200, opacity: 0, scale: 1.2 },
+      { y: 0, opacity: 1, scale: 1, duration: 1.8, ease: "back.inOut(1.7)" },
       "-=0.5",
-    ) //  delay of the animation
-      .from(
-        ".bee",
-        {
-          y: 250,
-          opacity: 0,
-          duration: 1.2,
-          ease: "back.inOut(0.7)",
-        },
-        "-=0.7",
-      ); // Use "-=0.7" delay of the animation
+    ).fromTo(
+      ".bee",
+      { y: 250, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, ease: "back.inOut(0.7)" },
+      "-=0.7",
+    );
   }, []);
 
   useEffect(() => {
