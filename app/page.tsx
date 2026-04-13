@@ -13,8 +13,8 @@ export default function Home() {
     tl.fromTo(
       ".shape",
       { y: 200, opacity: 0, scale: 1.2 },
-      { y: 0, opacity: 1, scale: 1, duration: 1.8, ease: "back.inOut(1.7)" },
-      "-=0.5",
+      { y: 0, opacity: 1, scale: 1, duration: 1.8, ease: "back.inOut(0.7)" },
+      "-=0.7",
     ).fromTo(
       ".bee",
       { y: 250, opacity: 0 },
@@ -43,7 +43,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="scene w-screen relative h-screen bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+    <main className="scene w-screen relative h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <div className="bee  absolute top-[47%] left-[50%] -translate-x-1/2 -translate-y-1/2 scale-[1.6] z-10">
         <Image
           alt="img"
