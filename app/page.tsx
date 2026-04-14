@@ -47,8 +47,9 @@ export default function Home() {
   return (
     <main className="scene w-screen relative h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
-      <div className="p_text absolute top-[65%] left-[10%] xl:translate-x-48 2xl:translate-x-56 -translate-y-60 z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
-        <h2 className="text-8xl text-center font-luxury">
+      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-28 xl:translate-y-0">
+      <div className="p_text absolute top-[65%] left-[10%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-25 xl:-translate-y-60 md:-translate-y-45  z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
+        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl text-center font-luxury">
           A
           <br />
           quién
@@ -58,8 +59,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text absolute top-[-0%] xl:left-[37%] 2xl:left-[40%] z-5 
-       text-stone-200 text-[10rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
+      <div className=" p_text absolute xl:top-[-0%] md:top-[10%] top-[-15%] xl:left-[37%] 2xl:left-[40%] z-5 
+       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide
+        [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
         <h1>
           Iremos
           <br />
@@ -69,8 +71,11 @@ export default function Home() {
           </strong>
         </h1>
       </div>
+      </section>
 
-      <div className="shape absolute bottom-0 right-0 z-20">
+      {/* imagen de cesped con obeja */}
+
+      <div className="shape absolute bottom-0 right-0 z-20 ">
         <div className="relative">
           <Image
             alt="img"
@@ -79,7 +84,8 @@ export default function Home() {
             height={1300}
             loading="eager"
           />
-          <div className="bee absolute top-[28%] left-[45%] -translate-x-1/2 -translate-y-1/2 scale-[1.6] z-[-1]">
+          <div className="bee absolute xl:top-[28%] md:top-[20%] left-[45%] 
+           xl:-translate-x-1/2 md:-translate-x-[35%] xl:-translate-y-1/2  xl:scale-[1.6] md:scale-[2.2] z-[-1]">
             <Image
               alt="img"
               src="/assets/Bee.png"
