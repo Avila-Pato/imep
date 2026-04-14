@@ -24,6 +24,7 @@ export default function Home() {
     );
   }, []);
 
+  // Efecto para el texto
   useEffect(() => {
     SplitText.create(".p_text", {
       type: "chars",
@@ -46,15 +47,6 @@ export default function Home() {
   return (
     <main className="scene w-screen relative h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
-      <div className="bee  absolute top-[47%] xl:top-[52%] 2xl:top-[48%]  left-[50%] -translate-x-1/2 -translate-y-1/2 scale-[1.6] z-10">
-        <Image
-          alt="img"
-          src="/assets/Bee.png"
-          width={900}
-          height={900}
-          priority
-        />
-      </div>
       <div className="p_text absolute top-[65%] left-[10%] xl:translate-x-48 2xl:translate-x-56 -translate-y-60 z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
         <h2 className="text-8xl text-center font-luxury">
           A
@@ -79,13 +71,24 @@ export default function Home() {
       </div>
 
       <div className="shape absolute bottom-0 right-0 z-20">
-        <Image
-          alt="img"
-          src="/assets/shapeDown3.png"
-          width={1500}
-          height={1300}
-          loading="eager"
-        />
+        <div className="relative">
+          <Image
+            alt="img"
+            src="/assets/shapeDown3.png"
+            width={1300}
+            height={1300}
+            loading="eager"
+          />
+          <div className="bee absolute top-[28%] left-[45%] -translate-x-1/2 -translate-y-1/2 scale-[1.6] z-[-1]">
+            <Image
+              alt="img"
+              src="/assets/Bee.png"
+              width={900}
+              height={900}
+              priority
+            />
+          </div>
+        </div>
       </div>
      
     </main>
