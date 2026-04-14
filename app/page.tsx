@@ -61,9 +61,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text absolute lg:top-[-10%]  xl:top-[-0%] md:top-[10%] top-[-15%] sm:left-[30%] sm:top-[30%]  xl:left-[37%] 2xl:left-[40%]  z-5 
-       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] sm:text-[3rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide
-        [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
+      <div className=" p_text absolute lg:top-[-10%]  xl:top-[-0%] md:top-[10%] top-[45%] sm:left-[30%] sm:top-[30%] 
+       xl:left-[37%] 2xl:left-[40%]  
+       z-5 
+       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] sm:text-[3rem] text-[2rem] font-luxury leading-none 
+       transform scale-x-[1.2] 
+       origin-left tracking-wide
+        [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]   ">
         <h1>
           Iremos
           <br />
@@ -86,9 +90,9 @@ export default function Home() {
             height={1300}
             loading="eager"
           />
-          <div className="bee absolute xl:top-[57%] lg:top-[23%] md:top-[20%] left-[45%] lg:left-[43%] 
-           xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2   
-           xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] z-[-1]">
+          <div className="bee absolute xl:top-[57%] lg:top-[23%] md:top-[20%] md:left-[45%] left-[-5%] top-[-2%] lg:left-[43%] 
+           xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2     
+           xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] sm:scale-125 z-[-1]">
             <Image
               alt="img"
               src="/assets/Bee.png"
