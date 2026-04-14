@@ -4,6 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { useEffect } from "react";
 import { SplitText } from "gsap/all";
+import Navbar from "./components/navbar";
 
 gsap.registerPlugin(SplitText);
 export default function Home() {
@@ -44,6 +45,7 @@ export default function Home() {
 
   return (
     <main className="scene w-screen relative h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+      <Navbar />
       <div className="bee  absolute top-[47%] left-[50%] -translate-x-1/2 -translate-y-1/2 scale-[1.6] z-10">
         <Image
           alt="img"
@@ -84,6 +86,7 @@ export default function Home() {
           height={1300}
         />
       </div>
+     
     </main>
   );
 }
