@@ -45,27 +45,27 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="scene w-screen relative md:h-screen h-[60vh] overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+    <main className="scene w-screen relative h-screen  overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
 
-      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-28 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12">
-      <div className="p_text absolute lg:top-[55%] xl:top-[65%] top-[60%] left-[5%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-20
+      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
+      <div className="p_text absolute lg:top-[55%] xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%] md:top-[60%] md:left-[20%] top-[72%] left-[5%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
-        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl  text-[2rem]  text-center font-luxury">
+        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl  text-[3rem]  text-center font-luxury">
           A
           <br />
           quién
         </h2>
         <div className="flex justify-center">
-        <p className=" font-serif italic text-xl  ">Juan 6:67,68</p>
+        <p className=" font-serif italic text-2xl  ">Juan 6:67,68</p>
         </div>
       </div>
 
-      <div className=" p_text absolute lg:top-[-10%]  xl:top-[-0%] md:top-[10%] top-[45%] left-[25%] sm:left-[30%] sm:top-[30%] 
-       xl:left-[37%] 2xl:left-[40%]  
-       z-5 
-       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] sm:text-[3rem] text-[2rem] font-luxury leading-none 
-       transform scale-x-[1.2] 
+      <div className=" p_text absolute lg:top-[-10%]  xl:top-[3%] md:top-[-0%] top-[52%] left-[25%] sm:left-[30%] sm:top-[50%]
+       xl:left-[37%] 2xl:left-[40%]
+       z-5
+       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] sm:text-[3rem] text-[3.2rem] font-luxury leading-none
+       transform scale-x-[1.2]
        origin-left tracking-wide
         [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]   ">
         <h1>
