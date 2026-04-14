@@ -55,8 +55,7 @@ export default function Home() {
           priority
         />
       </div>
-
-      <div className="p_text absolute top-[65%] left-[10%] translate-x-56 -translate-y-60 z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
+      <div className="p_text absolute top-[65%] left-[10%] xl:translate-x-48 2xl:translate-x-56 -translate-y-60 z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
         <h2 className="text-8xl text-center font-luxury">
           A
           <br />
@@ -67,7 +66,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text absolute top-[-0%] left-[40%] z-5  text-stone-200 text-[10rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
+      <div className=" p_text absolute top-[-0%] xl:left-[37%] 2xl:left-[40%] z-5 
+       text-stone-200 text-[10rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
         <h1>
           Iremos
           <br />
