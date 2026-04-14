@@ -47,9 +47,11 @@ export default function Home() {
   return (
     <main className="scene w-screen relative h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
-      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-28 xl:translate-y-0">
-      <div className="p_text absolute top-[65%] left-[10%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-25 xl:-translate-y-60 md:-translate-y-45  z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
-        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl text-center font-luxury">
+      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-28 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12">
+
+      <div className="p_text absolute lg:top-[55%] xl:top-[65%] top-[65%] left-[10%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-20
+       xl:-translate-y-60 md:-translate-y-45  z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
+        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl  text-center font-luxury">
           A
           <br />
           quién
@@ -59,8 +61,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text absolute xl:top-[-0%] md:top-[10%] top-[-15%] xl:left-[37%] 2xl:left-[40%] z-5 
-       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide
+      <div className=" p_text absolute lg:top-[-10%]  xl:top-[-0%] md:top-[10%] top-[-15%] sm:left-[30%] sm:top-[30%]  xl:left-[37%] 2xl:left-[40%]  z-5 
+       text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] sm:text-[3rem] font-luxury leading-none scale-x-[1.2] origin-left tracking-wide
         [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
         <h1>
           Iremos
@@ -84,8 +86,9 @@ export default function Home() {
             height={1300}
             loading="eager"
           />
-          <div className="bee absolute xl:top-[28%] md:top-[20%] left-[45%] 
-           xl:-translate-x-1/2 md:-translate-x-[35%] xl:-translate-y-1/2  xl:scale-[1.6] md:scale-[2.2] z-[-1]">
+          <div className="bee absolute xl:top-[57%] lg:top-[23%] md:top-[20%] left-[45%] lg:left-[43%] 
+           xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2   
+           xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] z-[-1]">
             <Image
               alt="img"
               src="/assets/Bee.png"
