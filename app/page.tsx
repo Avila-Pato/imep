@@ -48,30 +48,29 @@ export default function Home() {
     <main className="scene w-screen relative h-[60vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
 
-      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 
-      sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
-      <div className="p_text absolute lg:top-[55%]
-       xl:left-[2%] 2xl:left-[22%]  xl:top-[75%] sm:left-[10%] sm:top-[70%]
-        md:top-[60%] md:left-[20%] top-[55%] left-[2%] xl:translate-x-48 
+      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
+      <div className="p_text absolute lg:top-[55%] lg:left-[20%]
+       xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%]
+        md:top-[60%] md:left-[10%]  top-[55%] left-[2%] xl:translate-x-48 
         2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  
        z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
-        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl text-xl text-center font-luxury">
+        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl text-md text-center font-luxury">
           A
           <br />
           quién
         </h2>
         <div className="flex justify-center">
-        <p className=" font-serif italic text-xl">Juan 6:67,68</p>
+        <p className=" font-serif italic text-md">Juan 6:67,68</p>
         </div>
       </div>
 
       <div className=" p_text absolute lg:top-[-10%] 
-       xl:top-[3%] md:top-[5%] 
-       top-[40%] left-[24%] sm:left-[30%] sm:top-[50%]
-       xl:left-[32%] 2xl:left-[40%]
+       xl:top-[3%] md:top-[-5%] 
+       top-[30%] left-[24%] sm:left-[30%] sm:top-[50%]
+       xl:left-[37%] 2xl:left-[40%] 
        z-5
-       text-stone-200 xl:text-[10rem] lg:text-[8rem] 
+       text-stone-200 xl:text-[9rem] lg:text-[8rem] 
        md:text-[6rem] sm:text-[3rem] text-[2.3rem]
         font-luxury leading-none
        transform scale-x-[1.2]
@@ -90,17 +89,17 @@ export default function Home() {
 
       {/* imagen de cesped con obeja */}
 
-      <div className="shape absolute bottom-0 right-0  z-20 ">
+      <div className="shape absolute bottom-0 right-0 z-20  ">
         <div className="relative ">
           <Image
             alt="img"
             src="/assets/shapeDown3.png"
-            width={1500}
-            height={1300}
+            width={1100}
+            height={1100}
             loading="eager"
           />
           <div className="bee absolute xl:top-[56%]  lg:top-[23%] 
-          md:top-[20%] md:left-[40%] left-[-5%] top-[-10%] lg:left-[46%] 
+          md:top-[20%] md:left-[40%] left-[-5%] top-[-10%] lg:left-[43%] 
            xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2     
            xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] sm:scale-125   z-[-1]">
             <Image
