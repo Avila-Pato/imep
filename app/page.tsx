@@ -48,9 +48,10 @@ export default function Home() {
     <main className="scene w-screen relative h-[60vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
 
-      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
+      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 
+      sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
       <div className="p_text absolute lg:top-[55%]
-       xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%]
+       xl:left-[2%] 2xl:left-[22%]  xl:top-[75%] sm:left-[10%] sm:top-[70%]
         md:top-[60%] md:left-[20%] top-[55%] left-[2%] xl:translate-x-48 
         2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  
@@ -68,7 +69,7 @@ export default function Home() {
       <div className=" p_text absolute lg:top-[-10%] 
        xl:top-[3%] md:top-[5%] 
        top-[40%] left-[24%] sm:left-[30%] sm:top-[50%]
-       xl:left-[37%] 2xl:left-[40%]
+       xl:left-[32%] 2xl:left-[40%]
        z-5
        text-stone-200 xl:text-[10rem] lg:text-[8rem] 
        md:text-[6rem] sm:text-[3rem] text-[2.3rem]
@@ -89,12 +90,12 @@ export default function Home() {
 
       {/* imagen de cesped con obeja */}
 
-      <div className="shape absolute bottom-0 right-0 z-20  ">
+      <div className="shape absolute bottom-0 right-0  z-20 ">
         <div className="relative ">
           <Image
             alt="img"
             src="/assets/shapeDown3.png"
-            width={1300}
+            width={1500}
             height={1300}
             loading="eager"
           />
