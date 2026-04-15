@@ -49,9 +49,9 @@ export default function Home() {
       <Navbar />
 
       <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
-      <div className="p_text absolute lg:top-[55%] xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%] md:top-[60%] md:left-[20%] top-[75%] left-[5%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-20
+      <div className="p_text absolute lg:top-[55%] xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%] md:top-[60%] md:left-[20%] top-[73%] left-[2%] xl:translate-x-48 2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
-        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl  text-[1.5rem]  text-center font-luxury">
+        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl  text-[1.2rem]  text-center font-luxury">
           A
           <br />
           quién
@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text absolute lg:top-[-10%]  xl:top-[3%] md:top-[5%] top-[60%] left-[25%] sm:left-[30%] sm:top-[50%]
+      <div className=" p_text absolute lg:top-[-10%]  xl:top-[3%] md:top-[5%] top-[50%] left-[25%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%]
        z-5
        text-stone-200 xl:text-[10rem] lg:text-[8rem] md:text-[6rem] sm:text-[3rem] text-[2.3rem] font-luxury leading-none
