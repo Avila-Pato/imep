@@ -98,7 +98,7 @@ export default function Home() {
             height={1300}
             loading="eager"
           />
-          <div className="bee absolute xl:top-[57%]  lg:top-[23%] 
+          <div className="bee absolute xl:top-[56%]  lg:top-[23%] 
           md:top-[20%] md:left-[40%] left-[-5%] top-[-10%] lg:left-[46%] 
            xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2     
            xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] sm:scale-125   z-[-1]">
