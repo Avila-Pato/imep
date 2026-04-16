@@ -8,9 +8,21 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const SecondSection = () => {
+//IMG TRANSITION CAMBIOS
+const IMGS = [
+  "/assets/img/1.jpg",
+  "/assets/img/2.jpg",
+  "/assets/img/3.jpg",
+  "/assets/img/4.jpg",
+  "/assets/img/5.jpg",
+  "/assets/img/6.jpg",
+  "/assets/img/7.jpg",
+];
 
+const SecondSection = () => {
+  
   // ── Scroll Parallaz with img ─────────────────────────────────────────────────────────────────
+  const activeIdxRef = useRef(2);
   const stickyContainer = useRef<HTMLDivElement| null>(null);
 
   useGSAP(() => {
@@ -49,7 +61,11 @@ const SecondSection = () => {
       ease: "none",
       duration: 2,
     })
-    // Las otras imgs se desvanecen mientras aparece el arco
+    // Botones se mueven hacia adentro siguiendo el borde del arco
+    .to(".g-btn-prev", { marginLeft: "40%", ease: "none", duration: 2, marginTop: "15%" }, "<")
+    .to(".g-btn-next", { marginRight: "40%", ease: "none", duration: 2, marginTop: "15%" }, "<")
+
+    // Fase 3 -- Las otras imgs se desvanecen mientras aparece el arco
     .to(
       [".g-img1",".g-img2",".g-img4",".g-img5",".g-img6",".g-img7"],
       { opacity: 0, ease: "none", duration: 0.7 },
@@ -167,7 +183,46 @@ const SecondSection = () => {
           <div className="gallery-grid w-[80%]">
             <div className="g-img1"><Image src="/assets/img/1.jpg" alt="Imagen 1" fill className="object-cover" /></div>
             <div className="g-img2"><Image src="/assets/img/2.jpg" alt="Imagen 2" fill className="object-cover" /></div>
-            <div className="g-img3"><Image src="/assets/img/3.jpg" alt="Imagen 3" fill className="object-cover" /></div>
+            {/* img3 — todas las imgs apiladas para el slide */}
+            <div className="g-img3">
+              {IMGS.map((src, i) => (
+                <div
+                  key={i}
+                  className="gallery-slide absolute inset-0"
+                  style={{ transform: `translateX(${(i - 2) * 100}%)` }}
+                >
+                  <Image src={src} alt={`Imagen ${i + 1}`} fill className="object-cover" />
+                </div>
+              ))}
+              <div className="absolute inset-0 flex items-center justify-between z-20 pointer-events-none" style={{ padding: "0 8px" }}>
+                <button
+                  className="g-btn-prev pointer-events-auto w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
+                  onClick={() => {
+                    const prev = activeIdxRef.current;
+                    const next = (prev - 1 + IMGS.length) % IMGS.length;
+                    const slides = document.querySelectorAll<HTMLElement>(".gallery-slide");
+                    gsap.to(slides[prev], { x: "100%", duration: 0.5, ease: "power2.inOut" });
+                    gsap.fromTo(slides[next], { x: "-100%" }, { x: "0%", duration: 0.5, ease: "power2.inOut" });
+                    activeIdxRef.current = next;
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                </button>
+                <button
+                  className="g-btn-next pointer-events-auto w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
+                  onClick={() => {
+                    const prev = activeIdxRef.current;
+                    const next = (prev + 1) % IMGS.length;
+                    const slides = document.querySelectorAll<HTMLElement>(".gallery-slide");
+                    gsap.to(slides[prev], { x: "-100%", duration: 0.5, ease: "power2.inOut" });
+                    gsap.fromTo(slides[next], { x: "100%" }, { x: "0%", duration: 0.5, ease: "power2.inOut" });
+                    activeIdxRef.current = next;
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+                </button>
+              </div>
+            </div>
             <div className="g-img4"><Image src="/assets/img/4.jpg" alt="Imagen 4" fill className="object-cover" /></div>
             <div className="g-img5"><Image src="/assets/img/5.jpg" alt="Imagen 5" fill className="object-cover" /></div>
             <div className="g-img6"><Image src="/assets/img/6.jpg" alt="Imagen 6" fill className="object-cover" /></div>
