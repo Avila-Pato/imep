@@ -201,8 +201,10 @@ const SecondSection = () => {
                     const prev = activeIdxRef.current;
                     const next = (prev - 1 + IMGS.length) % IMGS.length;
                     const slides = document.querySelectorAll<HTMLElement>(".gallery-slide");
-                    gsap.to(slides[prev], { x: "100%", duration: 0.5, ease: "power2.inOut" });
-                    gsap.fromTo(slides[next], { x: "-100%" }, { x: "0%", duration: 0.5, ease: "power2.inOut" });
+                    gsap.killTweensOf([slides[prev], slides[next]]);
+                    gsap.set(slides[next], { x: "100%", opacity: 1, clipPath: "none", scale: 1 });
+                    gsap.to(slides[prev], { x: "-100%", duration: 0.55, ease: "power2.inOut" });
+                    gsap.to(slides[next], { x: "0%", duration: 0.55, ease: "power2.inOut" });
                     activeIdxRef.current = next;
                   }}
                 >
@@ -214,8 +216,10 @@ const SecondSection = () => {
                     const prev = activeIdxRef.current;
                     const next = (prev + 1) % IMGS.length;
                     const slides = document.querySelectorAll<HTMLElement>(".gallery-slide");
-                    gsap.to(slides[prev], { x: "-100%", duration: 0.5, ease: "power2.inOut" });
-                    gsap.fromTo(slides[next], { x: "100%" }, { x: "0%", duration: 0.5, ease: "power2.inOut" });
+                    gsap.killTweensOf([slides[prev], slides[next]]);
+                    gsap.set(slides[next], { x: "-100%", opacity: 1, clipPath: "none", scale: 1 });
+                    gsap.to(slides[prev], { x: "100%", duration: 0.55, ease: "power2.inOut" });
+                    gsap.to(slides[next], { x: "0%", duration: 0.55, ease: "power2.inOut" });
                     activeIdxRef.current = next;
                   }}
                 >
