@@ -3,7 +3,12 @@
 @theme {
   --font-luxury: var(--font-luxurious);
   --font-pinyon: var(--font-pinyon);
+  --font-voyager: var(--font-voyager);
+
+  --vh: 3.98px;
+
 }
+
 
 * {
   box-sizing: border-box;
@@ -14,4 +19,145 @@
 .shape,
 .bee {
   opacity: 0;
+}
+
+
+
+
+.img-overlay {
+  position: relative;
+}
+.img-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  z-index: 0;
+
+  mask-image: radial-gradient(
+    circle 240px at var(--x, 50%) var(--y, 50%),
+    transparent 0%,
+    black 100%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    circle 240px at var(--x, 50%) var(--y, 50%),
+    transparent 0%,
+    black 100%
+  );
+}
+
+.img-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    transparent
+  );
+}
+
+
+
+.img-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.04) 60%,
+    transparent 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: brightness(1.1) blur(2px);
+}
+
+.sticky-container {
+  position: sticky;
+  display: grid;
+  
+}
+
+/* Galería de 7 imágenes — grid 5×5 */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 6px;
+  height: 95vh;
+}
+
+.gallery-grid > div {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* img1 — izquierda alta, filas 1-3 */
+.g-img1 { grid-row: span 3 / span 3; }
+
+/* img2 — izquierda baja, filas 4-5 */
+.g-img2 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 1;
+  grid-row-start: 4;
+}
+
+/* img3 — featured grande centro, cols 2-4 filas 2-4 */
+.g-img3 {
+  grid-column: span 3 / span 3;
+  grid-row: span 3 / span 3;
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+/* img4 — pequeña arriba col 4 fila 1 */
+.g-img4 {
+  grid-column-start: 4;
+  grid-row-start: 1;
+  grid-row: span 1 / span 1;
+
+}
+
+/* img5 — pequeña abajo col 2 fila 5 */
+.g-img5 {
+  grid-column-start: 2;
+  grid-row-start: 4;
+  grid-row: span 2 / span 2;
+}
+
+/* img6 — derecha baja, filas 3-5 */
+.g-img6 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 5;
+  grid-row-start: 4;
+}
+
+/* img7 — derecha alta, filas 1-2 */
+.g-img7 {
+  grid-row: span 2 / span 2;
+  grid-column-start: 5;
+  grid-row-start: 2;
 }

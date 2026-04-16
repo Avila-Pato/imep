@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useEffect } from "react";
 import { SplitText } from "gsap/all";
 import Navbar from "./components/navbar";
+import SecondSection from "./components/SecondSection";
 
 gsap.registerPlugin(SplitText);
 export default function Home() {
@@ -45,10 +46,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="scene w-screen relative h-[60vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+    <>
+    <main className="scene  w-screen relative  h-[60vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       <Navbar />
 
-      <section className="w-full h-full flex justify-center items-center text-center md:translate-y-32 sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
+      <section className="w-full h-full  flex justify-center items-center text-center md:translate-y-32 
+      sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
       <div className="p_text absolute lg:top-[55%] lg:left-[20%]
        xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%]
         md:top-[60%] md:left-[10%]  top-[55%] left-[2%] xl:translate-x-48 
@@ -89,8 +92,10 @@ export default function Home() {
 
       {/* imagen de cesped con obeja */}
 
-      <div className="shape absolute bottom-0 right-0 z-20  ">
-        <div className="relative ">
+      <div className="shape absolute bottom-0 right-0 z-20  
+      
+      ">
+        <div className="relative  ">
           <Image
             alt="img"
             src="/assets/shapeDown3.png"
@@ -113,7 +118,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-     
     </main>
+    <SecondSection />
+    </>
   );
 }
