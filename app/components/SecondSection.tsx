@@ -57,13 +57,13 @@ const SecondSection = () => {
 
     // Fase 2 — se convierte en puerta/arco
     .to(".g-img3", {
-      clipPath: "inset(40% 40% -30% 40% round 999px 999px 12px 12px)",
+      clipPath: "inset(50% 40% -30% 40% round 999px 999px 12px 12px)",
       ease: "none",
       duration: 2,
     })
     // Botones se mueven hacia adentro siguiendo el borde del arco
-    .to(".g-btn-prev", { marginLeft: "40%", ease: "none", duration: 2, marginTop: "15%" }, "<")
-    .to(".g-btn-next", { marginRight: "40%", ease: "none", duration: 2, marginTop: "15%" }, "<")
+    .to(".g-btn-prev", { marginLeft: "42%", ease: "none", duration: 2, marginTop: "35%" }, "<")
+    .to(".g-btn-next", { marginRight: "42%", ease: "none", duration: 2, marginTop: "35%" }, "<")
 
     // Fase 3 -- Las otras imgs se desvanecen mientras aparece el arco
     .to(
