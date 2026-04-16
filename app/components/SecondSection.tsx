@@ -14,21 +14,38 @@ const SecondSection = () => {
   const stickyContainer = useRef<HTMLDivElement| null>(null);
 
   useGSAP(() => {
+    // Estado inicial para que GSAP pueda interpolar el clipPath
+    gsap.set(".g-img3", { clipPath: "inset(0% 0% 0% 0% round 4px)" });
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: stickyContainer.current,
         start: "top top",
-        end: "+=180%",
+        end: "+=300%",
         scrub: 2,
         pin: true,
         pinSpacing: true,
       },
     });
-    tl.to(
-      ".g-img3",
-      { scale: 1.8, ease: "none", duration: 1, transformOrigin: "center 30%" },
-      0
 
+    // Fase 1 — zoom
+    tl.to(".g-img3", {
+      scale: 1.8,
+      ease: "none",
+      duration: 1,
+      transformOrigin: "center 15%",
+    })
+    // Fase 2 — se convierte en puerta/arco
+    .to(".g-img3", {
+      clipPath: "inset(40% 40% -30% 40% round 999px 999px 12px 12px)",
+      ease: "none",
+      duration: 2,
+    })
+    // Las otras imgs se van desvaneciendo mientras aparece el arco
+    .to(
+      [".g-img1",".g-img2",".g-img4",".g-img5",".g-img6",".g-img7"],
+      { opacity: 0, ease: "none", duration: 0.7 },
+      "<0.2"
     );
   })
 
