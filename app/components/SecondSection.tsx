@@ -1,99 +1,94 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
-
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const SecondSection = () => {
+
+  // ── Scroll Parallaz with img ─────────────────────────────────────────────────────────────────
+  const stickyContainer = useRef<HTMLDivElement| null>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: stickyContainer.current,
+        start: "top top",
+        end: "+=180%",
+        scrub: 2,
+        pin: true,
+        pinSpacing: true,
+      },
+    });
+    tl.to(
+      ".g-img3",
+      { scale: 1.8, ease: "none", duration: 1, transformOrigin: "center 30%" },
+      0
+
+    );
+  })
+
+  // ── Cursor ──────────────────────────────────────────────────────────
   useEffect(() => {
     const overlay = document.querySelector(".img-overlay") as HTMLElement;
-
     gsap.set(".cursor", { opacity: 0 });
-
-    const xTo = gsap.quickTo(".cursor", "x", {
-      duration: 0.35,
-      ease: "power3",
-    });
-    const yTo = gsap.quickTo(".cursor", "y", {
-      duration: 0.35,
-      ease: "power3",
-    });
-
+    const xTo = gsap.quickTo(".cursor", "x", { duration: 0.35, ease: "power3" });
+    const yTo = gsap.quickTo(".cursor", "y", { duration: 0.35, ease: "power3" });
     const moveCursor = (e: MouseEvent) => {
-      xTo(e.clientX);
-      yTo(e.clientY);
-
+      xTo(e.clientX); yTo(e.clientY);
       if (overlay) {
-        const rect = overlay.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        overlay.style.setProperty("--x", `${x}px`);
-        overlay.style.setProperty("--y", `${y}px`);
+        const r = overlay.getBoundingClientRect();
+        overlay.style.setProperty("--x", `${e.clientX - r.left}px`);
+        overlay.style.setProperty("--y", `${e.clientY - r.top}px`);
       }
     };
-
     const onEnter = () => gsap.to(".cursor", { opacity: 1, duration: 0.3 });
     const onLeave = () => gsap.to(".cursor", { opacity: 0, duration: 0.3 });
-
-    const section = document.querySelector(".img-overlay");
-    section?.addEventListener("mouseenter", onEnter);
-    section?.addEventListener("mouseleave", onLeave);
+    const sec = document.querySelector(".img-overlay");
+    sec?.addEventListener("mouseenter", onEnter);
+    sec?.addEventListener("mouseleave", onLeave);
     window.addEventListener("mousemove", moveCursor);
-
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      section?.removeEventListener("mouseenter", onEnter);
-      section?.removeEventListener("mouseleave", onLeave);
+      sec?.removeEventListener("mouseenter", onEnter);
+      sec?.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 
-
-
+  // ── Animaciones principales Para el texto──────────────────────────────────────────
   useEffect(() => {
-    // Scroll + lenis para la animacion del scroll con el texto
     const lenis = new Lenis({
       duration: 2.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-    })
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+    const tick = (time: number) => { lenis.raf(time); requestAnimationFrame(tick); };
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
 
-    lenis.on("scroll", ScrollTrigger.update)
-
-    const tickerCallBack = (time: number) => {
-      lenis.raf(time)
-      requestAnimationFrame(tickerCallBack)
-    }
-    gsap.ticker.add(tickerCallBack)
-    gsap.ticker.lagSmoothing(0)
-
-    // Letras dispersas que convergen → "convocadas desde el caos"
+    // Texto
     const split = SplitText.create(".h1_text", { type: "chars" });
-
     gsap.from(split.chars, {
       x: () => gsap.utils.random(-window.innerWidth * 0.6, window.innerWidth * 0.6),
       y: () => gsap.utils.random(-window.innerHeight * 0.5, window.innerHeight * 0.5),
       rotation: () => gsap.utils.random(-180, 180),
       scale: () => gsap.utils.random(0.2, 2.5),
-      opacity: 0,
-      filter: "blur(6px)",
-      duration: 1.6,
-      ease: "expo.out",
+      opacity: 0, filter: "blur(6px)",
+      duration: 1.6, ease: "expo.out",
       stagger: { amount: 0.7, from: "random" },
       delay: 0.3,
       scrollTrigger: {
-        trigger: ".h1_text",
-        start: "top 80%",
+        trigger: ".h1_text", start: "top 80%",
         toggleActions: "play none none reverse",
       },
     });
 
-    // Animación oval con scrub:
-    // scroll abajo → imágenes caen en arco a su posición
-    // scroll arriba → imágenes suben de vuelta
+    // ── Galería: entrada oval para las imgs─────────────────────────────────────────
     const galleryItems = [
       { selector: ".g-img1", xFrom:  180 },
       { selector: ".g-img2", xFrom:  220 },
@@ -103,13 +98,9 @@ const SecondSection = () => {
       { selector: ".g-img6", xFrom: -230 },
       { selector: ".g-img7", xFrom: -240 },
     ];
-
-    // Estado inicial: arriba e invisible
-    galleryItems.forEach(({ selector, xFrom }) => {
-      gsap.set(selector, { y: -420, x: xFrom, opacity: 0 });
-    });
-
-    // Timeline con 3 keyframes por imagen → define la curva oval
+    galleryItems.forEach(({ selector, xFrom }) =>
+      gsap.set(selector, { y: -420, x: xFrom, opacity: 0 })
+    );
     const galleryTl = gsap.timeline({ paused: true });
     galleryItems.forEach(({ selector, xFrom }, idx) => {
       galleryTl.to(selector, {
@@ -118,46 +109,37 @@ const SecondSection = () => {
           { y:  -80, x: xFrom * 0.28, opacity: 0.6 },
           { y:    0, x: 0,            opacity: 1   },
         ],
-        duration: 1,
-        ease: "none",
+        duration: 1, ease: "none",
       }, idx * 0.12);
     });
-
-    // pinnedContainer indica que el gallery vive dentro del contenedor
-    // pinneado → ScrollTrigger calcula los offsets correctamente
     ScrollTrigger.create({
-      trigger: ".gallery-grid",
-      start: "top bottom",
-      end: "top 10%",
-      scrub: 0.8,
-      animation: galleryTl,
-      pinnedContainer: ".img-overlay",
+      trigger: ".gallery-grid", start: "top 65%",
+      once: true, onEnter: () => galleryTl.play(),
     });
-
-  },[])
+  }, []);
 
   return (
     <>
-        <div className="cursor"></div>
-      <main
-        className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")]
-    bg-cover bg-center bg-fixed'
-      >
-        <section className="w-full h-[60vh] flex justify-center  ">
-          <div className="text-white  flex flex-col items-center justify-center translate-y-2">
+      <div className="cursor" />
+
+      {/* ── Sección principal ─────────────────────────────────────────── */}
+      <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed'>
+
+        {/* Texto */}
+        <section className="w-full h-[60vh] flex justify-center">
+          <div className="text-white flex flex-col items-center justify-center">
             <h1 className="h1_text font-voyager tracking-wide text-6xl text-center">
               Por tanto, aceptaos los unos a los otros,
               <br />
-               como también Cristo nos
-              aceptó.
+              como también Cristo nos aceptó.
             </h1>
-            <span>Romanos 15:7</span>
+            <span className="mt-2 text-white/60 text-sm tracking-widest">Romanos 15:7</span>
           </div>
         </section>
 
-        {/* Galería de imágenes */}
-        <section className=" mx-auto w-full flex justify-center pb-8">
-          <div className="gallery-grid w-[80%] ">
+        {/* Galería */}
+        <section className="gallery-section mx-auto w-full flex justify-center pb-8 overflow-visible"  ref={stickyContainer}>
+          <div className="gallery-grid w-[80%]">
             <div className="g-img1"><Image src="/assets/img/1.jpg" alt="Imagen 1" fill className="object-cover" /></div>
             <div className="g-img2"><Image src="/assets/img/2.jpg" alt="Imagen 2" fill className="object-cover" /></div>
             <div className="g-img3"><Image src="/assets/img/3.jpg" alt="Imagen 3" fill className="object-cover" /></div>
@@ -168,6 +150,11 @@ const SecondSection = () => {
           </div>
         </section>
       </main>
+
+      {/* ── Tercera sección ──────────────────────────────────────────── */}
+      <section className="w-full min-h-screen bg-stone-950 flex items-center justify-center">
+        <p className="text-white/40 text-sm tracking-widest uppercase">Próxima sección</p>
+      </section>
     </>
   );
 };
