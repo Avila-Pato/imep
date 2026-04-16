@@ -8,7 +8,7 @@ const NAV_ITEMS = [
 
 const Navbar = () => {
   return (
-    <nav className="absolute top-8 left-8 z-50 flex items-center gap-6">
+    <nav className="navbar-gradient fixed top-0 left-0 right-0 z-50 flex items-center gap-6">
         {/* Logo */}
         <Image
           alt="IMEP logo"

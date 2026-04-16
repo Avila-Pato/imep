@@ -6,7 +6,22 @@
   --font-voyager: var(--font-voyager);
 
   --vh: 3.98px;
+  --c-brown-rgb: 52, 61, 40;
+}
 
+.navbar-gradient {
+  padding: 16px 48px 64px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(52, 61, 40, .6)  0%,
+    rgba(52, 61, 40, .57) 17%,
+    rgba(52, 61, 40, .48) 31%,
+    rgba(52, 61, 40, .36) 44%,
+    rgba(52, 61, 40, .24) 56%,
+    rgba(52, 61, 40, .12) 69%,
+    rgba(52, 61, 40, .03) 83%,
+    rgba(52, 61, 40, 0)   100%
+  );
 }
 
 
