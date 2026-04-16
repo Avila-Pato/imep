@@ -28,20 +28,28 @@ const SecondSection = () => {
       },
     });
 
-    // Fase 1 — zoom
+    // Fase 1 — zoom + dispersión de las otras imgs
     tl.to(".g-img3", {
       scale: 1.8,
       ease: "none",
       duration: 1,
       transformOrigin: "center 15%",
     })
+    // Se dispersan mientras img3 crece — cada una se aleja en su dirección natural
+    .to(".g-img1", { x: -160, y: -40,  ease: "none", duration: 1 }, 0)
+    .to(".g-img2", { x: -180, y:  80,  ease: "none", duration: 1 }, 0)
+    .to(".g-img4", { x:  140, y: -80,  ease: "none", duration: 1 }, 0)
+    .to(".g-img5", { x: -120, y:  100, ease: "none", duration: 1 }, 0)
+    .to(".g-img6", { x:  160, y:  80,  ease: "none", duration: 1 }, 0)
+    .to(".g-img7", { x:  150, y: -60,  ease: "none", duration: 1 }, 0)
+
     // Fase 2 — se convierte en puerta/arco
     .to(".g-img3", {
       clipPath: "inset(40% 40% -30% 40% round 999px 999px 12px 12px)",
       ease: "none",
       duration: 2,
     })
-    // Las otras imgs se van desvaneciendo mientras aparece el arco
+    // Las otras imgs se desvanecen mientras aparece el arco
     .to(
       [".g-img1",".g-img2",".g-img4",".g-img5",".g-img6",".g-img7"],
       { opacity: 0, ease: "none", duration: 0.7 },
