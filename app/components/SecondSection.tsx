@@ -116,17 +116,18 @@ const SecondSection = () => {
     // Texto
     const split = SplitText.create(".h1_text", { type: "chars" });
     gsap.from(split.chars, {
-      x: () => gsap.utils.random(-window.innerWidth * 0.6, window.innerWidth * 0.6),
-      y: () => gsap.utils.random(-window.innerHeight * 0.5, window.innerHeight * 0.5),
-      rotation: () => gsap.utils.random(-180, 180),
-      scale: () => gsap.utils.random(0.2, 2.5),
-      opacity: 0, filter: "blur(6px)",
-      duration: 1.6, ease: "expo.out",
-      stagger: { amount: 0.7, from: "random" },
-      delay: 0.3,
+      x: () => gsap.utils.random(-120, 120),
+      y: () => gsap.utils.random(-80, 80),
+      rotation: () => gsap.utils.random(-45, 45),
+      scale: () => gsap.utils.random(0.5, 1.5),
+      opacity: 0, filter: "blur(4px)",
+      duration: 2, ease: "power3.out",
+      stagger: { amount: 0.9, from: "random" },
+      delay: 0.2,
       scrollTrigger: {
         trigger: ".h1_text", start: "top 80%",
-        toggleActions: "play none none reverse",
+        toggleActions: "play none none none",
+        once: true,
       },
     });
 
@@ -168,7 +169,7 @@ const SecondSection = () => {
       <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed'>
 
         {/* Texto */}
-        <section className="w-full h-[60vh] flex justify-center">
+        <section className="w-full h-[60vh] flex justify-center overflow-hidden">
           <div className="text-white flex flex-col items-center justify-center">
             <h1 className="h1_text font-voyager tracking-wide text-6xl text-center">
               Por tanto, aceptaos los unos a los otros,
