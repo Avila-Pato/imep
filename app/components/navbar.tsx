@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const NAV_ITEMS = [
   { id: 1, title: "Home", url: "/" },
-  { id: 2, title: "Acerca", url: "/about" },
+  { id: 2, title: "Nosotros", url: "/" },
 ];
 
 const Navbar = () => {

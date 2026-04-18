@@ -23,7 +23,7 @@ const IMGS = [
 const SecondSection = () => {
   
   // ── Scroll Parallaz with img ─────────────────────────────────────────────────────────────────
-  const activeIdxRef = useRef(2);
+  const activeIdxRef = useRef(4);
   const stickyContainer = useRef<HTMLDivElement| null>(null);
 
   useGSAP(() => {
@@ -182,17 +182,17 @@ const SecondSection = () => {
         {/* Galería */}
         <section className="gallery-section mx-auto w-full flex justify-center pb-8 overflow-visible"  ref={stickyContainer}>
           <div className="gallery-grid w-[80%]">
-            <div className="g-img1"><Image src="/assets/img/1.jpg" alt="Imagen 1" fill className="object-cover" /></div>
-            <div className="g-img2"><Image src="/assets/img/2.jpg" alt="Imagen 2" fill className="object-cover" /></div>
+            <div className="g-img1"><Image src="/assets/img/1.jpg" alt="Imagen 1" fill sizes="20vw" className="object-cover" /></div>
+            <div className="g-img2"><Image src="/assets/img/2.jpg" alt="Imagen 2" fill sizes="20vw" className="object-cover" /></div>
             {/* img3 — todas las imgs apiladas para el slide */}
             <div className="g-img3">
               {IMGS.map((src, i) => (
                 <div
                   key={i}
                   className="gallery-slide absolute inset-0"
-                  style={{ transform: `translateX(${(i - 2) * 100}%)` }}
+                  style={{ transform: `translateX(${(i - 4) * 100}%)` }}
                 >
-                  <Image src={src} alt={`Imagen ${i + 1}`} fill className="object-cover" />
+                  <Image src={src} alt={`Imagen ${i + 1}`} fill sizes="60vw" className="object-cover" />
                 </div>
               ))}
               <div className="absolute inset-0 flex items-center justify-between z-20 pointer-events-none" style={{ padding: "0 8px" }}>
@@ -228,10 +228,10 @@ const SecondSection = () => {
                 </button>
               </div>
             </div>
-            <div className="g-img4"><Image src="/assets/img/4.jpg" alt="Imagen 4" fill className="object-cover" /></div>
-            <div className="g-img5"><Image src="/assets/img/5.jpg" alt="Imagen 5" fill className="object-cover" /></div>
-            <div className="g-img6"><Image src="/assets/img/6.jpg" alt="Imagen 6" fill className="object-cover" /></div>
-            <div className="g-img7"><Image src="/assets/img/7.jpg" alt="Imagen 7" fill className="object-cover" /></div>
+            <div className="g-img4"><Image src="/assets/img/4.jpg" alt="Imagen 4" fill sizes="20vw" className="object-cover" /></div>
+            <div className="g-img5"><Image src="/assets/img/3.jpg" alt="Imagen 5" fill sizes="20vw" className="object-cover" /></div>
+            <div className="g-img6"><Image src="/assets/img/6.jpg" alt="Imagen 6" fill sizes="20vw" className="object-cover" /></div>
+            <div className="g-img7"><Image src="/assets/img/7.jpg" alt="Imagen 7" fill sizes="20vw" className="object-cover" /></div>
           </div>
         </section>
       </main>
