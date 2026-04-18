@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import { useGSAP } from "@gsap/react";
+import ThirdSection from "./ThirdSection";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -236,9 +237,7 @@ const SecondSection = () => {
       </main>
 
       {/* ── Tercera sección ──────────────────────────────────────────── */}
-      <section className="w-full min-h-screen bg-stone-950 flex items-center justify-center">
-        <p className="text-white/40 text-sm tracking-widest uppercase">Próxima sección</p>
-      </section>
+      <ThirdSection />
     </>
   );
 };

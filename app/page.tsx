@@ -48,6 +48,8 @@ export default function Home() {
   return (
     <>
     <main className="scene  w-screen relative  h-[60vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+      {/* Gradiente inferior que fusiona con la sección siguiente */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-30" style={{ background: "linear-gradient(to bottom, transparent, black)" }} />
       <Navbar />
 
       <section className="w-full h-full  flex justify-center items-center text-center md:translate-y-32 
