@@ -6,6 +6,7 @@ import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import { useGSAP } from "@gsap/react";
 import ThirdSection from "./ThirdSection";
+import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -30,23 +31,25 @@ const SecondSection = () => {
     // Estado inicial para que GSAP pueda interpolar el clipPath
     gsap.set(".g-img3", { clipPath: "inset(0% 0% 0% 0% round 4px)" });
 
+    const isMobile = window.innerWidth < 768; // Ajusta el zoom para móviles
+    
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: stickyContainer.current,
-        start: "top top",
-        end: "+=300%",
-        scrub: 2,
-        pin: true,
-        pinSpacing: true,
+        start: isMobile ? "-=50%" : "top top",
+        end: isMobile ? "+=50%" : "+=300%",  // la animacion en lo que dura el scroll de 3 pantallas
+        scrub: 2, // hace que la aniamcion haga un scroll suave
+        pin: true, // fija el elemento en pantalla mientras dura la animacion
+        pinSpacing: true, // agrega espacio debajo del elemento fijado para evitar saltos de contenido
       },
     });
 
     // Fase 1 — zoom + dispersión de las otras imgs
     tl.to(".g-img3", {
-      scale: 1.8,
+      scale: isMobile ? 1.15 : 1.8,
       ease: "none",
       duration: 1,
-      transformOrigin: "center 15%",
+      transformOrigin: isMobile ? "center center" : "center 15%",
     })
     // Se dispersan mientras img3 crece — cada una se aleja en su dirección natural
     .to(".g-img1", { x: -160, y: -40,  ease: "none", duration: 1 }, 0)
@@ -58,13 +61,21 @@ const SecondSection = () => {
 
     // Fase 2 — se convierte en puerta/arco
     .to(".g-img3", {
-      clipPath: "inset(50% 40% -30% 40% round 999px 999px 12px 12px)",
+      clipPath: isMobile
+      
+        ? "inset(50% 20% -30% 20% round 999px 999px 42px 42px)" // sin cambio en móviles
+        : "inset(50% 40% -30% 40% round 999px 999px 12px 12px)", // recortada horizontalmente en desktop
       ease: "none",
       duration: 2,
     })
     // Botones se mueven hacia adentro siguiendo el borde del arco
-    .to(".g-btn-prev", { marginLeft: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
-    .to(".g-btn-next", { marginRight: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
+    .to(".g-btn-prev", isMobile 
+      ? { marginLeft: "42%", ease: "none", duration: 2, marginTop: "15%", width: "19px", height: "19px", scale: 1.5 } 
+      : { marginLeft: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
+
+    .to(".g-btn-next", isMobile 
+      ? { marginRight: "42%", ease: "none", duration: 2, marginTop: "15%", width: "19px", height: "19px", scale: 1.5  } 
+      : { marginRight: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
 
     // Fase 3 -- Las otras imgs se desvanecen mientras aparece el arco
     .to(
@@ -171,7 +182,7 @@ const SecondSection = () => {
         {/* Texto */}
         <section className="w-full h-[60vh] flex justify-center overflow-hidden">
           <div className="text-white flex flex-col items-center justify-center">
-            <h1 className="h1_text font-voyager tracking-wide text-6xl text-center">
+            <h1 className="h1_text font-voyager tracking-wide  lg:text-6xl text-xl text-center ">
               Por tanto, aceptaos los unos a los otros,
               <br />
               como también Cristo nos aceptó.
