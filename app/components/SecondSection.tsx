@@ -70,11 +70,11 @@ const SecondSection = () => {
     })
     // Botones se mueven hacia adentro siguiendo el borde del arco
     .to(".g-btn-prev", isMobile 
-      ? { marginLeft: "42%", ease: "none", duration: 2, marginTop: "15%", width: "19px", height: "19px", scale: 1.5 } 
+      ? { marginLeft: "12%", ease: "none", duration: 1, marginTop: "15%", width: "19px", height: "19px", scale: 1.5 } 
       : { marginLeft: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
 
     .to(".g-btn-next", isMobile 
-      ? { marginRight: "42%", ease: "none", duration: 2, marginTop: "15%", width: "19px", height: "19px", scale: 1.5  } 
+      ? { marginRight: "12%", ease: "none", duration: 1, marginTop: "15%", width: "19px", height: "19px", scale: 1.5  } 
       : { marginRight: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
 
     // Fase 3 -- Las otras imgs se desvanecen mientras aparece el arco
