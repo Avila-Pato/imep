@@ -106,8 +106,6 @@
     rgba(255, 255, 255, 0.04) 60%,
     transparent 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: brightness(1.1) blur(2px);
 }
 
 .sticky-container {
