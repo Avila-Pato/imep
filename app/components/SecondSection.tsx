@@ -142,34 +142,36 @@ const SecondSection = () => {
       },
     });
 
-    // ── Galería: entrada oval para las imgs─────────────────────────────────────────
-    const galleryItems = [
-      { selector: ".g-img1", xFrom:  180 },
-      { selector: ".g-img2", xFrom:  220 },
-      { selector: ".g-img3", xFrom:   40 },
-      { selector: ".g-img4", xFrom: -160 },
-      { selector: ".g-img5", xFrom:  100 },
-      { selector: ".g-img6", xFrom: -230 },
-      { selector: ".g-img7", xFrom: -240 },
-    ];
-    galleryItems.forEach(({ selector, xFrom }) =>
-      gsap.set(selector, { y: -420, x: xFrom, opacity: 0 })
-    );
-    const galleryTl = gsap.timeline({ paused: true });
-    galleryItems.forEach(({ selector, xFrom }, idx) => {
-      galleryTl.to(selector, {
-        keyframes: [
-          { y: -420, x: xFrom,        opacity: 0   },
-          { y:  -80, x: xFrom * 0.28, opacity: 0.6 },
-          { y:    0, x: 0,            opacity: 1   },
-        ],
-        duration: 1, ease: "none",
-      }, idx * 0.12);
-    });
-    ScrollTrigger.create({
-      trigger: ".gallery-grid", start: "top 65%",
-      once: true, onEnter: () => galleryTl.play(),
-    });
+    // ── Galería: entrada oval para las imgs (solo desktop) ─────────────────────────────────────────
+    if (window.innerWidth >= 768) {
+      const galleryItems = [
+        { selector: ".g-img1", xFrom:  180 },
+        { selector: ".g-img2", xFrom:  220 },
+        { selector: ".g-img3", xFrom:   40 },
+        { selector: ".g-img4", xFrom: -160 },
+        { selector: ".g-img5", xFrom:  100 },
+        { selector: ".g-img6", xFrom: -230 },
+        { selector: ".g-img7", xFrom: -240 },
+      ];
+      galleryItems.forEach(({ selector, xFrom }) =>
+        gsap.set(selector, { y: -420, x: xFrom, opacity: 0 })
+      );
+      const galleryTl = gsap.timeline({ paused: true });
+      galleryItems.forEach(({ selector, xFrom }, idx) => {
+        galleryTl.to(selector, {
+          keyframes: [
+            { y: -420, x: xFrom,        opacity: 0   },
+            { y:  -80, x: xFrom * 0.28, opacity: 0.6 },
+            { y:    0, x: 0,            opacity: 1   },
+          ],
+          duration: 1, ease: "none",
+        }, idx * 0.12);
+      });
+      ScrollTrigger.create({
+        trigger: ".gallery-grid", start: "top 65%",
+        once: true, onEnter: () => galleryTl.play(),
+      });
+    }
   }, []);
 
   return (
@@ -180,7 +182,7 @@ const SecondSection = () => {
       <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed'>
 
         {/* Texto */}
-        <section className="w-full h-[60vh] items-center flex justify-center flex-col overflow-hidden">
+        <section className="w-full h-[30vh] items-center flex justify-center flex-col overflow-hidden">
             <h1 className="h1_text font-voyager tracking-wide  text-stone-200   lg:text-6xl text-xl text-center ">
               Por tanto, aceptaos los unos a los otros,
               <br />
