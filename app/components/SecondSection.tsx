@@ -180,15 +180,13 @@ const SecondSection = () => {
       <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed'>
 
         {/* Texto */}
-        <section className="w-full h-[60vh] flex justify-center overflow-hidden">
-          <div className="text-white flex flex-col items-center justify-center">
-            <h1 className="h1_text font-voyager tracking-wide  lg:text-6xl text-xl text-center ">
+        <section className="w-full h-[60vh] items-center flex justify-center flex-col overflow-hidden">
+            <h1 className="h1_text font-voyager tracking-wide  text-stone-200   lg:text-6xl text-xl text-center ">
               Por tanto, aceptaos los unos a los otros,
               <br />
               como también Cristo nos aceptó.
             </h1>
-            <span className="mt-2 text-white/60 text-sm tracking-widest">Romanos 15:7</span>
-          </div>
+            <span className="mt-2 text-stone-200 text-sm tracking-widest">Romanos 15:7</span>
         </section>
 
         {/* Galería */}
