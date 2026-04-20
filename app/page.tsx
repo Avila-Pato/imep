@@ -27,10 +27,10 @@ export default function Home() {
 
   // Efecto para el texto
   useEffect(() => {
-    SplitText.create(".p_text", {
-      type: "chars",
+    const animProps = (delay: number) => ({
+      type: "chars" as const,
       autoSplit: true,
-      onSplit: (self) => {
+      onSplit: (self: { chars: Element[] }) => {
         gsap.from(self.chars, {
           opacity: 0,
           scale: 0,
@@ -40,9 +40,12 @@ export default function Home() {
           duration: 0.6,
           ease: "back.out(1.7)",
           stagger: 0.03,
+          delay,
         });
       },
     });
+    SplitText.create(".p_text_1", animProps(0));
+    SplitText.create(".p_text_2", animProps(0.9));
   }, []);
 
   return (
@@ -52,9 +55,10 @@ export default function Home() {
       <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-30" style={{ background: "linear-gradient(to bottom, transparent, black)" }} />
       <Navbar />
 
-      <section className="w-full h-full  flex justify-center items-center text-center md:translate-y-32 
+      <section className="w-full h-full  flex justify-center items-center text-center
+       md:translate-y-32 
       sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
-      <div className="p_text absolute lg:top-[55%] lg:left-[20%]
+      <div className="p_text_1 absolute lg:top-[55%] lg:left-[20%]
        xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%]
         md:top-[60%] md:left-[10%]  top-[65%] left-[2%] xl:translate-x-48 
         2xl:translate-x-56 md:translate-x-20
@@ -70,7 +74,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text absolute lg:top-[-10%] 
+      <div className=" p_text_2 absolute lg:top-[-10%] 
        xl:top-[3%] md:top-[-5%] 
        top-[50%] left-[24%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%] 
