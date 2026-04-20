@@ -60,7 +60,7 @@ export default function Home() {
         2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  
        z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
-        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl text-md text-center font-luxury">
+        <h2 className="xl:text-8xl lg:text-7xl md:text-6xl text-[1.5rem] text-center font-luxury">
           A
           <br />
           quién
