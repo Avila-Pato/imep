@@ -38,13 +38,15 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
   return (
     <div
       ref={rootRef}
-      className="fixed inset-0 z-99 flex items-center justify-center px-6 pointer-events-none opacity-0"
+      className="fixed inset-0 z-99 flex 
+      items-center justify-center px-6 pointer-events-none opacity-0"
       onClick={onClose}
     >
       <div
         ref={panelRef}
         onClick={(e) => e.stopPropagation()}
-        className="w-full h-[50vh] max-w-sm rounded-2xl bg-white/10 backdrop-blur-2xl border border-white/15 shadow-2xl overflow-hidden"
+        className="w-full h-[50vh] max-w-sm rounded-2xl
+         bg-white/10 backdrop-blur-2xl border border-white/15 shadow-2xl overflow-hidden"
       >
         {/* Header */}
         <div className="flex  justify-end    border-b border-white/10">
