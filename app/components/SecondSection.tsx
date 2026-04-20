@@ -124,23 +124,25 @@ const SecondSection = () => {
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
-    // Texto
-    const split = SplitText.create(".h1_text", { type: "chars" });
-    gsap.from(split.chars, {
-      x: () => gsap.utils.random(-120, 120),
-      y: () => gsap.utils.random(-80, 80),
-      rotation: () => gsap.utils.random(-45, 45),
-      scale: () => gsap.utils.random(0.5, 1.5),
-      opacity: 0, filter: "blur(4px)",
-      duration: 2, ease: "power3.out",
-      stagger: { amount: 0.9, from: "random" },
-      delay: 0.2,
-      scrollTrigger: {
-        trigger: ".h1_text", start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    });
+    // Texto (solo desktop)
+    if (window.innerWidth >= 768) {
+      const split = SplitText.create(".h1_text", { type: "chars" });
+      gsap.from(split.chars, {
+        x: () => gsap.utils.random(-120, 120),
+        y: () => gsap.utils.random(-80, 80),
+        rotation: () => gsap.utils.random(-45, 45),
+        scale: () => gsap.utils.random(0.5, 1.5),
+        opacity: 0, filter: "blur(4px)",
+        duration: 2, ease: "power3.out",
+        stagger: { amount: 0.9, from: "random" },
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: ".h1_text", start: "top 80%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      });
+    }
 
     // ── Galería: entrada oval para las imgs (solo desktop) ─────────────────────────────────────────
     if (window.innerWidth >= 768) {

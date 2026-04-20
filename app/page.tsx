@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <>
-    <main className="scene  w-screen relative  h-[80vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+    <main className="scene  w-screen relative  h-[90vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       {/* Gradiente inferior que fusiona con la sección siguiente */}
       <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-30" style={{ background: "linear-gradient(to bottom, transparent, black)" }} />
       <Navbar />
@@ -56,7 +56,7 @@ export default function Home() {
       sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
       <div className="p_text absolute lg:top-[55%] lg:left-[20%]
        xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%]
-        md:top-[60%] md:left-[10%]  top-[55%] left-[2%] xl:translate-x-48 
+        md:top-[60%] md:left-[10%]  top-[65%] left-[2%] xl:translate-x-48 
         2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  
        z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
@@ -72,7 +72,7 @@ export default function Home() {
 
       <div className=" p_text absolute lg:top-[-10%] 
        xl:top-[3%] md:top-[-5%] 
-       top-[30%] left-[24%] sm:left-[30%] sm:top-[50%]
+       top-[50%] left-[24%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%] 
        z-5
        text-stone-200 xl:text-[9rem] lg:text-[8rem] 
