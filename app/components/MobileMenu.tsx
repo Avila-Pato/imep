@@ -76,7 +76,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           </div>
 
         {/* Links */}
-        <nav className="flex flex-col px-6  translate-y-1/2 gap-2">
+        <nav className="flex flex-col px-6     gap-2">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.id}
