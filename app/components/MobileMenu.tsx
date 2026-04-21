@@ -49,16 +49,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
          bg-white/10 backdrop-blur-2xl border border-white/15 shadow-2xl overflow-hidden"
       >
         {/* Header */}
-        <div className="flex  justify-end    border-b border-white/10">
-          {/* <span className="font-luxury text-white/60 text-xs tracking-widest uppercase">Menú</span> */}
-          <button onClick={onClose} aria-label="Cerrar"
-           className="text-white/50  hover:text-white transition-colors ">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-        </div>
-
+        <div className="flex  justify-end    border-b border-white/10" />
         {/* Links */}
         <nav className="flex flex-col items-center justify-center flex-1 py-8 px-6 gap-2">
           {NAV_ITEMS.map((item) => (

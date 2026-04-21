@@ -15,7 +15,7 @@ const Navbar = () => {
     <>
       <nav className="navbar-gradient fixed top-0 left-0 right-0 z-50 flex items-center justify-between">
         <Image alt="IMEP logo" width={100} height={100} src="/logo5.png"
-          className="w-10 h-10 sm:w-20 sm:h-20 md:w-15.5 md:h-15.5" />
+          className="hidden md:block sm:w-20 sm:h-20 md:w-18.5 md:h-18.5" />
 
         {/* Links desktop */}
         <ul className="hidden md:flex items-center gap-8 md:gap-10">
@@ -36,11 +36,11 @@ const Navbar = () => {
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
         >
           {menuOpen ? (
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
