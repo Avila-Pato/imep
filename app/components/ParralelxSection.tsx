@@ -37,6 +37,7 @@ const ParallexPhoto = () => {
       end: `+=${window.innerHeight * 2.5}`, // aniamciond ela img al aparecer
       pin: true,
       pinSpacing: true,
+      immediateRender: true, // Para evitar parpadeos al iniciar
       onUpdate: (self) => {
         const progress = self.progress;
 
@@ -91,6 +92,10 @@ const ParallexPhoto = () => {
             overwrite: true,
           }); // Mostrar
         }
+
+        ScrollTrigger.refresh(); // Asegura que ScrollTrigger se actualice con los cambios de estilo
+
+
         const heroImgStart = 0.65;
         const heroImgProgress = Math.max(
           0,
@@ -142,6 +147,8 @@ const ParallexPhoto = () => {
       gsap.ticker.remove(tickerCallback);
       ScrollTrigger.getAll().forEach((t) => t.kill());
       lenis.destroy();
+      
+      
     };
   }, []);
 

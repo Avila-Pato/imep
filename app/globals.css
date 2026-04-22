@@ -284,6 +284,10 @@
   justify-content: center;
 }
 
+.hero-copy h3 {
+  opacity: 0; /* Que el DOM lo oculte desde el inicio */
+}
+
 .hero-header .h1-parallex {
    width: 40%;
 }
