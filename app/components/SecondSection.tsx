@@ -210,7 +210,7 @@ const SecondSection = () => {
         );
       });
       ScrollTrigger.create({
-        trigger: ".gallery-grid",
+        trigger: ".gallery-grid-1", // no necesario es pesada la animacion y se ronpe
         start: "top 65%",
         once: true,
         onEnter: () => galleryTl.play(),
