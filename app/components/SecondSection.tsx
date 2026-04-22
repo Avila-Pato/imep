@@ -168,7 +168,7 @@ const SecondSection = () => {
         filter: "blur(4px)",
         duration: 0.5,
         ease: "power3.out",
-        stagger: { amount: 0.9, from: "random" },
+        stagger: { amount: 0.9, from: "random" }, // define en cuantos e demoran en aparecer todos los caracteres y el orden (random)
         delay: 0.2,
         scrollTrigger: {
           trigger: ".h1_text",

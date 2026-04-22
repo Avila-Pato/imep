@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import ParallexPhoto from "./ParralelxSection";
 
 const ThirdSection = () => {
   return (
+    <>
     <section
-      className="relative w-full min-h-screen bg-cover bg-center bg-fixed flex items-center justify-center"
+      className="relative w-full bg-cover bg-center bg-fixed"
       style={{ backgroundImage: "url('/w-bg.jpg')" }}
     >
       {/* Star mask centrada en la parte superior */}
@@ -18,8 +20,9 @@ const ThirdSection = () => {
         />
       </div>
 
-      <p className="text-white/40 text-sm tracking-widest uppercase">Próxima sección</p>
+      <ParallexPhoto />
     </section>
+      </>
   );
 };
 
