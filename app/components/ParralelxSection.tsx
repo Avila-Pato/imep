@@ -34,7 +34,7 @@ const ParallexPhoto = () => {
     ScrollTrigger.create({
       trigger: ".hero-parallex",
       start: "top top",
-      end: `+=${window.innerHeight * 3.5}`, // aniamciond ela img al aparecer
+      end: `+=${window.innerHeight * 2.5}`, // aniamciond ela img al aparecer
       pin: true,
       pinSpacing: true,
       onUpdate: (self) => {
@@ -143,7 +143,7 @@ const ParallexPhoto = () => {
     <main>
       <section className="hero-parallex section-parallex ">
         <div className="hero-img">
-          <Image src="/assets/img/1.jpg" alt="" width={900} height={900} />
+          <Image src="/assets/img/1.jpg" alt="" fill />
         </div>
         <div className="hero-header">
           <h1 className="h1-parallex text-center text-black">Parallax Photo</h1>
