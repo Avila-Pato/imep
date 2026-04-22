@@ -96,6 +96,7 @@ const ParallexPhoto = () => {
         ScrollTrigger.refresh(); // Asegura que ScrollTrigger se actualice con los cambios de estilo
 
 
+          // Animación de la imagen del hero, desde el 65% hasta el 100% del scroll
         const heroImgStart = 0.65;
         const heroImgProgress = Math.max(
           0,
@@ -159,12 +160,11 @@ const ParallexPhoto = () => {
           <Image src="/assets/img/1.jpg" alt="" fill />
         </div>
         <div className="hero-header">
-          <h1 className="h1-parallex text-center text-black">Parallax Photo</h1>
+          <h1 className="h1-parallex text-center text-black font-luxury">Templo Imep Central</h1>
         </div>
         <div className="hero-copy">
-          <h3 className="h3-parallex text-center text-black">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
-            debitis.
+          <h3 className="h3-parallex text-center text-white border-2 border-black/20 p-4 rounded-lg font-luxury bg-stone-600/30">
+            Iglesia mision evangélica pentecostal, fundada en xxx, con la visión de ser un templo de adoración, enseñanza y comunión para la gloria de Dios.
           </h3>
         </div>
       </section>
@@ -231,8 +231,7 @@ const ParallexPhoto = () => {
 
         <div className="about-header">
           <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
-            voluptas.
+            Iglesia mision evangélica pentecostal, fundada en xxx, con la visión de ser un templo de adoración, enseñanza y comunión para la gloria de Dios.
           </h3>
         </div>
       </section>
