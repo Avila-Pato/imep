@@ -58,10 +58,16 @@ const ParallexPhoto = () => {
           opacity,
         });
 
-       
-        const heroWordsProgress = Math.max(
+        // const heroWordsProgress = Math.max(
+        //   0,
+        //   // Ahora: empieza casi desde el inicio (0.05) y termina al 40% (0.40)
+        //   Math.min((progress - 0.05) / 0.35, 1),
+        // );
+
+        //1- aparece palabra por palabras  por scroll desde el 5% hasta el 40% del scroll
+        const inttroProgress = Math.max(
           0,
-          Math.min((progress - 0.29) / 0.21, 1),
+          Math.min((progress - 0.05) / 0.35, 1),
         );
 
         const totalWords = heroCopySplit.words.length;
@@ -70,34 +76,40 @@ const ParallexPhoto = () => {
           const wordEnd = (i + 1) / totalWords;
           const wordOpacity = Math.max(
             0,
-            Math.min((heroWordsProgress - wordStart) / (wordEnd - wordStart)),
+            Math.min((inttroProgress - wordStart) / (wordEnd - wordStart)),
           );
           gsap.set(word, { opacity: wordOpacity });
         });
 
         if (progress > 0.64 && !isHeroCopyHidden) {
           isHeroCopyHidden = true;
-          gsap.to(".hero-copy h3", { opacity: 0, duration: 0.2, overwrite: true });
+          gsap.to(".hero-copy h3", {
+            opacity: 1,
+            duration: 0.2,
+            overwrite: true,
+          }); // Ocultar
         } else if (progress <= 0.64 && isHeroCopyHidden) {
           isHeroCopyHidden = false;
-          gsap.to(".hero-copy h3", { opacity: 1, duration: 0.2, overwrite: true });
+          gsap.to(".hero-copy h3", {
+            opacity: 1,
+            duration: 0.2,
+            overwrite: true,
+          }); // Mostrar
         }
 
-        
         const heroImgProgress = Math.max(
           0,
           Math.min((progress - 0.71) / 0.29, 1),
         );
         const heroImgWith = gsap.utils.interpolate(
-            400,
-            window.innerWidth * 0.8,
-            heroImgProgress
+          400,
+          window.innerWidth * 0.8,
+          heroImgProgress,
         );
         const heroImgHeight = gsap.utils.interpolate(
           400,
-            window.innerHeight * 0.8,
-            heroImgProgress
-          
+          window.innerHeight * 0.8,
+          heroImgProgress,
         );
         const heroImgBorderRadius = gsap.utils.interpolate(
           0,
@@ -217,7 +229,8 @@ const ParallexPhoto = () => {
 
         <div className="about-header">
           <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, voluptas.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
+            voluptas.
           </h3>
         </div>
       </section>

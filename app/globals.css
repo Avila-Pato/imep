@@ -254,13 +254,17 @@
   left: 50%;
   top: 70%;
   transform: translate(-50%, -50%);
+  
   will-change: transform, opacity, width, height;
 }
 
 .hero-img {
+  position: relative; /* Necesario para que Next/Image 'fill' funcione */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 400px;        /* El valor inicial de tu interpolate */
+  height: 400px;       /* El valor inicial de tu interpolate */
   overflow: hidden;
 }
 
@@ -272,7 +276,7 @@
 
 .hero-header,
 .hero-copy {
-  /* padding: 2rem; para la separaciond el texto */
+  padding: 2rem; 
   padding: 4rem; 
   display: flex;
   width: 100%;
