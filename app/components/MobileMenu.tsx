@@ -70,7 +70,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           alt="IMEP logo"
           width={100}
           height={100}
-          src="/logo5.png"
+          src="/logo1.png"
           className="w-13.5 h-13.5 "
           />
           </div>
