@@ -58,12 +58,7 @@ const ParallexPhoto = () => {
           opacity,
         });
 
-        // const heroWordsProgress = Math.max(
-        //   0,
-        //   // Ahora: empieza casi desde el inicio (0.05) y termina al 40% (0.40)
-        //   Math.min((progress - 0.05) / 0.35, 1),
-        // );
-
+      
         //1- aparece palabra por palabras  por scroll desde el 5% hasta el 40% del scroll
         const inttroProgress = Math.max(
           0,
@@ -91,15 +86,15 @@ const ParallexPhoto = () => {
         } else if (progress <= 0.64 && isHeroCopyHidden) {
           isHeroCopyHidden = false;
           gsap.to(".hero-copy h3", {
-            opacity: 1,
+            opacity: 0,
             duration: 0.2,
             overwrite: true,
           }); // Mostrar
         }
-
+        const heroImgStart = 0.65;
         const heroImgProgress = Math.max(
           0,
-          Math.min((progress - 0.71) / 0.29, 1),
+          Math.min((progress - heroImgStart) / 0.35, 1),
         );
         const heroImgWith = gsap.utils.interpolate(
           400,
