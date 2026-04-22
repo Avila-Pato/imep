@@ -76,12 +76,11 @@ const ParallexPhoto = () => {
         });
 
         if (progress > 0.64 && !isHeroCopyHidden) {
-
           isHeroCopyHidden = true;
-          gsap.to(".hero-copy h3", { opacity: 1, duration: 0.2 });
+          gsap.to(".hero-copy h3", { opacity: 0, duration: 0.2, overwrite: true });
         } else if (progress <= 0.64 && isHeroCopyHidden) {
           isHeroCopyHidden = false;
-          gsap.to(".hero-copy h3", { opacity: 1, duration: 0.2 });
+          gsap.to(".hero-copy h3", { opacity: 1, duration: 0.2, overwrite: true });
         }
 
         
