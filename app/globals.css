@@ -242,7 +242,7 @@
   position: relative;
   width: 100%;
   height: 100svh;
-  overflow: hidden;
+  /* overflow: hidden eliminado — lo maneja hero-img individualmente */
 }
 
 
@@ -267,8 +267,25 @@
   z-index: 0;
 }
 
-.hero-copy {
-  top: 50%; /* centrada sobre la imagen */
+.hero-img .hero-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  padding: 0;
+  z-index: 2;
+}
+
+.hero-img .hero-copy {
+  /* anclada a la esquina inferior-izquierda de la imagen */
+  position: absolute;
+  bottom: 2.5rem;
+  left: 1.5rem;
+  top: auto;
+  right: auto;
+  width: auto;
+  padding: 0;
   z-index: 1;
 }
 
@@ -281,24 +298,61 @@
 
 .hero-header,
 .hero-copy {
-  padding: 2rem; 
-  padding: 4rem; 
+  padding: 1.5rem;
   display: flex;
   width: 100%;
-  display: flex;
   justify-content: center;
 }
 
 .hero-copy h3 {
-  opacity: 0; /* Que el DOM lo oculte desde el inicio */
+  opacity: 0;
 }
 
+/* ── H1 — centrado en la imagen, mismo glass que h3 ──────────── */
 .hero-header .h1-parallex {
-   width: 40%;
+  color: #f8f4ee;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 300;
+  line-height: 1.15;
+  white-space: nowrap;
+
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 1.75rem;
+  border-radius: 4px;
+
+  text-shadow:
+    0 1px 6px rgba(0, 0, 0, 0.6),
+    0 2px 16px rgba(0, 0, 0, 0.4);
 }
 
+/* ── H3 — columna estrecha + línea vertical izquierda ────────── */
 .hero-copy .h3-parallex {
-  width: 80%;
+  max-width: 45ch;
+  width: auto;
+  color: #f8f4ee;
+  font-weight: 300;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  text-align: left;
+
+  /* fondo oscuro + glass: legible sobre cualquier zona de la foto */
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+  border-radius: 4px;
+
+  text-shadow:
+    0 1px 6px rgba(0, 0, 0, 0.6),
+    0 2px 16px rgba(0, 0, 0, 0.4);
+
+  /* línea decorativa vertical izquierda */
+  border-left: 1px solid rgba(248, 244, 238, 0.5);
+  position: relative;
 }
 .about {
   margin-top: 275svh;
