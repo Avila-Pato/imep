@@ -6,7 +6,6 @@ import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import { useGSAP } from "@gsap/react";
 import ThirdSection from "./ThirdSection";
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -36,7 +35,7 @@ const SecondSection = () => {
       scrollTrigger: {
         trigger: stickyContainer.current,
         start: isMobile ? "-=50%" : "top top",
-        end: isMobile ? "+=50%" : "+=300%", // la animacion en lo que dura el scroll de 3 pantallas
+        end: isMobile ? "+=50%" : "+=200%", // la animacion en lo que dura el scroll de 3 pantallas
         scrub: 2, // hace que la aniamcion haga un scroll suave
         pin: true, // fija el elemento en pantalla mientras dura la animacion
         pinSpacing: true, // agrega espacio debajo del elemento fijado para evitar saltos de contenido
@@ -224,7 +223,8 @@ const SecondSection = () => {
       <div className="cursor" />
 
       {/* ── Sección principal ─────────────────────────────────────────── */}
-      <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed'>
+      <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] 
+      bg-cover bg-center bg-fixed z-10'>
         {/* Texto */}
         <section className="w-full h-[30vh] items-center flex justify-center flex-col overflow-hidden">
           <h1 className="h1_text font-voyager tracking-wide  text-stone-200   lg:text-6xl text-xl text-center ">

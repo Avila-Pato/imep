@@ -11,7 +11,7 @@ const ThirdSection = () => {
       style={{ backgroundImage: "url('/w-bg.jpg')" }}
     >
       {/* Star mask centrada en la parte superior */}
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <Image
             src="/star-mask.svg"
             alt="star mask"

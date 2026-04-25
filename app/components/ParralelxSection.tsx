@@ -53,10 +53,11 @@ const ParallexPhoto = () => {
       const setCopyY   = gsap.quickSetter(".hero-copy",   "y",           "px") as (v: number) => void;
       const setCopyOp  = gsap.quickSetter(".hero-copy",   "opacity")           as (v: number) => void;
 
+        //
       const st = ScrollTrigger.create({
         trigger: ".hero-parallex",
         start: "top top",
-        end: `+=${window.innerHeight * 2.5}`,
+        end: `+=${window.innerHeight * 1.5}`,
         pin: true,
         pinSpacing: true,
         onUpdate: ({ progress: p }) => {
