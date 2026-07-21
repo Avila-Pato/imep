@@ -259,7 +259,7 @@ const ParallexPhoto = () => {
               src="/assets/img/2.jpg"
               alt=""
               width={300}
-              height={300}
+              height={350}
               className="img"
             />
           </div>
@@ -268,7 +268,7 @@ const ParallexPhoto = () => {
               src="/assets/img/3.jpg"
               alt=""
               width={300}
-              height={300}
+              height={400}
               className="img"
             />
           </div>
@@ -277,7 +277,7 @@ const ParallexPhoto = () => {
               src="/assets/img/4.jpg"
               alt=""
               width={300}
-              height={300}
+              height={500}
               className="img"
             />
           </div>
