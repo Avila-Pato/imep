@@ -14,46 +14,84 @@ const ParallexPhoto = () => {
   useEffect(() => {
     const lenis = new Lenis();
     lenis.on("scroll", ScrollTrigger.update);
-    const tickerCallback = (time: number) => { lenis.raf(time * 1000); };
+    const tickerCallback = (time: number) => {
+      lenis.raf(time * 1000);
+    };
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
+    // ── Animación hero section ───────────────────────────────────────────────
     const heroCopySplit = SplitText.create(".hero-copy h3", {
       type: "words",
       wordsClass: "word",
     });
-    const totalWords = heroCopySplit.words.length;
 
+    const titleHeroSplit = SplitText.create(".hero-header h1", {
+      type: "words",
+      wordsClass: "word",
+    });
+    const totalWordsForTitle = titleHeroSplit.words.length;
+
+    // totalWords se usa para escalonar la aparición de cada palabra
+    const totalWords = heroCopySplit.words.length;
+    // ── Configuración responsive con matchMedia ───────────────────────────────
     const mm = gsap.matchMedia();
 
     // ── Desktop ──────────────────────────────────────────────────────────────
     mm.add("(min-width: 769px)", () => {
       const finalImgW = window.innerWidth * 0.8;
       const finalImgH = window.innerHeight * 0.8;
+      // Escala proporcional: el h1 ocupa el mismo % relativo de la imagen en todo momento
+      const initialH1Scale = 400 / finalImgW;
 
-      // GSAP toma ownership de transforms antes de que ScrollTrigger exista
-      // → evita el salto CSS→GSAP en el primer frame
-      // ── Posición inicial y final del contenedor h3 ──────────────
-      // Modifica estos valores para ajustar la animación de posición
-      const copyStart = { x: 50, y: 40 };  // posición inicial (px desde el anchor CSS)
-      const copyEnd   = { x:   0, y:  0 };  // posición final   (el anchor CSS: bottom-left)
+      const copyStart = { x: 50, y: 40 };
+      const copyEnd = { x: 0, y: 0 };
 
-      gsap.set(".hero-img",    { xPercent: -50, yPercent: -50, width: 400, height: 400, borderRadius: 0 });
-      gsap.set(".hero-header", { opacity: 0 });
-      gsap.set(".hero-copy",   { x: copyStart.x, y: copyStart.y, opacity: 0 });
+      gsap.set(".hero-img", {
+        xPercent: -50,
+        yPercent: -50,
+        width: 400,
+        height: 400,
+        borderRadius: 0,
+      });
+      gsap.set(".hero-header", {
+        xPercent: -50,
+        yPercent: -50,
+        scale: initialH1Scale,
+        opacity: 0,
+      });
+      gsap.set(".hero-copy", { x: copyStart.x, y: copyStart.y, opacity: 0 });
       gsap.set(".hero-copy h3", { opacity: 1 });
       heroCopySplit.words.forEach((w) => gsap.set(w, { opacity: 0 }));
+      titleHeroSplit.words.forEach((w) => gsap.set(w, { opacity: 0 }));
 
       // quickSetter: omite el parsing de propiedades en cada frame del scroll
-      const setImgW    = gsap.quickSetter(".hero-img",    "width",        "px") as (v: number) => void;
-      const setImgH    = gsap.quickSetter(".hero-img",    "height",       "px") as (v: number) => void;
-      const setImgR    = gsap.quickSetter(".hero-img",    "borderRadius", "px") as (v: number) => void;
-      const setH1Op    = gsap.quickSetter(".hero-header", "opacity")            as (v: number) => void;
-      const setCopyX   = gsap.quickSetter(".hero-copy",   "x",           "px") as (v: number) => void;
-      const setCopyY   = gsap.quickSetter(".hero-copy",   "y",           "px") as (v: number) => void;
-      const setCopyOp  = gsap.quickSetter(".hero-copy",   "opacity")           as (v: number) => void;
+      const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (
+        v: number,
+      ) => void;
+      const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (
+        v: number,
+      ) => void;
+      const setImgR = gsap.quickSetter(".hero-img", "borderRadius", "px") as (
+        v: number,
+      ) => void;
+      const setH1ContainerOp = gsap.quickSetter(".hero-header", "opacity") as (
+        v: number,
+      ) => void;
+      const setH1Scale = gsap.quickSetter(".hero-header", "scale") as (
+        v: number,
+      ) => void;
+      const setCopyX = gsap.quickSetter(".hero-copy", "x", "px") as (
+        v: number,
+      ) => void;
+      const setCopyY = gsap.quickSetter(".hero-copy", "y", "px") as (
+        v: number,
+      ) => void;
+      const setCopyOp = gsap.quickSetter(".hero-copy", "opacity") as (
+        v: number,
+      ) => void;
 
-        //
+      //
       const st = ScrollTrigger.create({
         trigger: ".hero-parallex",
         start: "top top",
@@ -61,7 +99,6 @@ const ParallexPhoto = () => {
         pin: true,
         pinSpacing: true,
         onUpdate: ({ progress: p }) => {
-
           // h3 contenedor — se mueve de copyStart → copyEnd (0.05 → 0.50)
           const copyP = Math.max(0, Math.min((p - 0.05) / 0.45, 1));
           setCopyX(gsap.utils.interpolate(copyStart.x, copyEnd.x, copyP));
@@ -78,14 +115,26 @@ const ParallexPhoto = () => {
             gsap.set(word, { opacity: wOpacity });
           });
 
-          // Imagen — crece (0.65 → 1.0)
+          // h1 — palabras aparecen una a una (0.20 → 0.65), contenedor sigue el mismo progreso
+          const h1P = Math.max(0, Math.min((p - 0.2) / 0.45, 1));
+          setH1ContainerOp(h1P);
+          titleHeroSplit.words.forEach((word, i) => {
+            const wOpacity = Math.max(
+              0,
+              Math.min(
+                (h1P - i / totalWordsForTitle) / (1 / totalWordsForTitle),
+                1,
+              ),
+            );
+            gsap.set(word, { opacity: wOpacity });
+          });
+
+          // Imagen + h1 crecen juntos (0.65 → 1.0)
           const imgP = Math.max(0, Math.min((p - 0.65) / 0.35, 1));
           setImgW(gsap.utils.interpolate(400, finalImgW, imgP));
           setImgH(gsap.utils.interpolate(400, finalImgH, imgP));
           setImgR(gsap.utils.interpolate(0, 10, imgP));
-
-          // h1 — aparece sincronizado con el crecimiento de la imagen
-          setH1Op(imgP);
+          setH1Scale(gsap.utils.interpolate(initialH1Scale, 1, imgP));
         },
       });
 
@@ -97,14 +146,26 @@ const ParallexPhoto = () => {
       const finalImgW = window.innerWidth * 0.95;
       const finalImgH = window.innerHeight * 0.6;
 
-      gsap.set(".hero-img",    { xPercent: -50, yPercent: -50, width: 300, height: 300, borderRadius: 0 });
+      gsap.set(".hero-img", {
+        xPercent: -50,
+        yPercent: -50,
+        width: 300,
+        height: 300,
+        borderRadius: 0,
+      });
       gsap.set(".hero-header", { xPercent: -50, yPercent: -50 });
       // En móvil se omite la animación de palabras para ahorrar CPU
       gsap.set(".hero-copy h3", { opacity: 0 });
 
-      const setImgW  = gsap.quickSetter(".hero-img",    "width",  "px") as (v: number) => void;
-      const setImgH  = gsap.quickSetter(".hero-img",    "height", "px") as (v: number) => void;
-      const setHdrOp = gsap.quickSetter(".hero-header", "opacity")      as (v: number) => void;
+      const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (
+        v: number,
+      ) => void;
+      const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (
+        v: number,
+      ) => void;
+      const setHdrOp = gsap.quickSetter(".hero-header", "opacity") as (
+        v: number,
+      ) => void;
 
       const st = ScrollTrigger.create({
         trigger: ".hero-parallex",
@@ -125,14 +186,14 @@ const ParallexPhoto = () => {
 
     // ── About section parallax ───────────────────────────────────────────────
     const aboutImgCols = [
-      { id: "#about-imgs-col-1", y: -200 },
-      { id: "#about-imgs-col-2", y: -200 },
-      { id: "#about-imgs-col-3", y: -250 },
-      { id: "#about-imgs-col-4", y: -500 },
+      { selector: ".about-img-wrapper:nth-child(1)", y: -40 },
+      { selector: ".about-img-wrapper:nth-child(2)", y: -20 },
+      { selector: ".about-img-wrapper:nth-child(3)", y: -30 },
+      { selector: ".about-img-wrapper:nth-child(4)", y: -50 },
     ];
 
-    aboutImgCols.forEach(({ id, y }) => {
-      gsap.to(id, {
+    aboutImgCols.forEach(({ selector, y }) => {
+      gsap.to(selector, {
         y,
         scrollTrigger: {
           trigger: ".about-parallex",
@@ -145,7 +206,7 @@ const ParallexPhoto = () => {
 
     return () => {
       gsap.ticker.remove(tickerCallback);
-      mm.revert();                                      // limpia ScrollTriggers del matchMedia
+      mm.revert(); // limpia ScrollTriggers del matchMedia
       ScrollTrigger.getAll().forEach((t) => t.kill()); // limpia about triggers
       lenis.destroy();
     };
@@ -168,83 +229,77 @@ const ParallexPhoto = () => {
           </div>
           <div className="hero-copy">
             <h3 className="h3-parallex font-luxury">
-              Iglesia misión evangélica pentecostal, fundada con la visión de ser un templo de adoración, enseñanza y comunión para la gloria de Dios.
+              Iglesia misión evangélica pentecostal, fundada con la visión de
+              ser un templo de adoración, enseñanza y comunión para la gloria de
+              Dios.
             </h3>
           </div>
         </div>
       </section>
 
-      <section className="about-parallex section-parallex">
-        <div className="about-img">
-          <div className="about-imgs-col" id="about-imgs-col-1">
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={500} height={500} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={500} height={500} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={500} height={500} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={500} height={500} />
-            </div>
-          </div>
-          <div className="about-imgs-col" id="about-imgs-col-2">
-            <div className="img">
-              <Image src="/assets/img/5.jpg" alt="" width={500} height={500} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/6.jpg" alt="" width={500} height={500} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/7.jpg" alt="" width={500} height={500} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={500} height={500} />
-            </div>
-          </div>
-          <div className="about-imgs-col" id="about-imgs-col-3">
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-          </div>
-          <div className="about-imgs-col" id="about-imgs-col-4">
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-            <div className="img">
-              <Image src="/assets/img/1.jpg" alt="" width={100} height={100} />
-            </div>
-          </div>
-        </div>
-
+      <section className="about-parallex section-parallex ">
         <div className="about-header">
-          <h3>
-            Iglesia mision evangélica pentecostal, fundada en xxx, con la visión de ser un templo de adoración, enseñanza y comunión para la gloria de Dios.
+          <h3 className="about-subtitle font-luxury">
+            Un lugar para crecer en la palabra, servir con amor y vivir en
+            comunión.
           </h3>
+          <h3 className="about-title font-luxury">
+            Iglesia misión evangélica pentecostal, fundada en xxx, con la visión
+            de ser un templo de adoración, enseñanza y comunión para la gloria
+            de Dios.
+          </h3>
+          <p className="about-description font-luxury">
+            Llevando el mensaje de fe, esperanza y transformación a las familias
+            de nuestra comunidad.
+          </p>
         </div>
-      </section>
-
-      <section className="outro section-parallex">
-        <h3 className="h3-outro">
-          the frame settles back into quiet stillness
-        </h3>
+        <div className="about-imgs-col">
+          <div className="about-img-wrapper " id="about-imgs-col-1">
+            <Image
+              src="/assets/img/2.jpg"
+              alt=""
+              width={300}
+              height={300}
+              className="img"
+            />
+          </div>
+          <div className="about-img-wrapper">
+            <Image
+              src="/assets/img/3.jpg"
+              alt=""
+              width={300}
+              height={300}
+              className="img"
+            />
+          </div>
+          <div className="about-img-wrapper">
+            <Image
+              src="/assets/img/4.jpg"
+              alt=""
+              width={300}
+              height={300}
+              className="img"
+            />
+          </div>
+          <div className="about-img-wrapper">
+            <Image
+              src="/assets/img/5.jpg"
+              alt=""
+              width={300}
+              height={300}
+              className="img"
+            />
+          </div>
+          <div className="about-img-wrapper">
+            <Image
+              src="/assets/img/5.jpg"
+              alt=""
+              width={300}
+              height={300}
+              className="img"
+            />
+          </div>
+        </div>
       </section>
     </main>
   );
