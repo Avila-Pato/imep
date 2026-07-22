@@ -2,12 +2,17 @@
 
 import Image from "next/image";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useEffectEvent } from "react";
 import { SplitText } from "gsap/all";
 import Navbar from "./components/navbar";
-import SecondSection from "./components/SecondSection";
+import SecondSection from "./sections/SecondSection";
+import Lenis from "lenis";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger);
+
+
 export default function Home() {
   // Efecto para las imagenes
   useEffect(() => {
@@ -48,9 +53,40 @@ export default function Home() {
     SplitText.create(".p_text_2", animProps(0.9));
   }, []);
 
+  //Efecto para scroll
+
+  useEffect(() => {
+    //isntanacia a lenis
+    const lenis = new Lenis({
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      smoothWheel: true,
+  })
+
+  //actalizar scrolltriger cuando Lenis haga scroll
+  lenis.on("scroll", ScrollTrigger.update)
+
+  // funcion que se ejecuta en cada frame
+  const update = (timer: number) => {
+    lenis.raf(timer * 1000)
+  }
+
+  //GSAP controla el render de lenis
+  gsap.ticker.add(update)
+  //Evita que GSAP  intente retrasos
+  gsap.ticker.lagSmoothing(0)
+
+  //Limpiar lenis
+  return () => {
+    lenis.destroy()
+    gsap.ticker.remove(update)
+  }
+
+    }, [])
+
   return (
     <>
-    <main className="scene  w-screen relative  h-[90vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+    <main className="scene  w-full relative  h-[90vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       {/* Gradiente inferior que fusiona con la sección siguiente */}
       <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-30" style={{ background: "linear-gradient(to bottom, transparent, black)" }} />
       <Navbar />

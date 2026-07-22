@@ -1,0 +1,17 @@
+{
+    "folder-color.favoriteColors": [],
+    "folder-color.pathColors": [
+        {
+            "filePath": "imep\\app\\sections\\ParralelxSection.tsx",
+            "color": "foldercolorizer.color_d7af5f"
+        },
+        {
+            "filePath": "imep\\app\\sections\\SecondSection.tsx",
+            "color": "foldercolorizer.color_d7af5f"
+        },
+        {
+            "filePath": "imep\\app\\sections\\ThirdSection.tsx",
+            "color": "foldercolorizer.color_d7af5f"
+        }
+    ]
+}
