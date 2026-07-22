@@ -61,7 +61,7 @@ const SecondSection = () => {
           scale: 1.8,
           ease: "none",
           duration: 1,
-          transformOrigin: "center 15%",
+          transformOrigin: "center 2%",
         })
         .to(".g-img1", { x: -160, y: -40, ease: "none", duration: 1 }, 0)
         .to(".g-img2", { x: -180, y: 80, ease: "none", duration: 1 }, 0)
@@ -74,8 +74,8 @@ const SecondSection = () => {
           ease: "none",
           duration: 2,
         })
-        .to(".g-btn-prev", { marginLeft: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
-        .to(".g-btn-next", { marginRight: "42%", ease: "none", duration: 2, marginTop: "15%" }, "<")
+        .to(".g-btn-prev", { marginLeft: "42%", ease: "none", duration: 2, marginTop: "35%" }, "<")
+        .to(".g-btn-next", { marginRight: "42%", ease: "none", duration: 2, marginTop: "35%" }, "<")
         .to(
           [".g-img1", ".g-img2", ".g-img4", ".g-img5", ".g-img6", ".g-img7"],
           { opacity: 0, ease: "none", duration: 0.7 },
@@ -186,7 +186,7 @@ const SecondSection = () => {
 
         {/* Galería */}
         <section
-          className="gallery-section mx-auto w-full flex justify-center pb-8 overflow-visible"
+          className="gallery-section mx-auto w-full flex justify-center h-screen overflow-visible"
           ref={stickyContainer}
         >
           <div className="gallery-grid w-[80%]">
@@ -230,6 +230,7 @@ const SecondSection = () => {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="15 18 9 12 15 6" />
                   </svg>
+                  
                 </button>
                 <button
                   className="g-btn-next pointer-events-auto w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"

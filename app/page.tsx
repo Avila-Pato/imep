@@ -78,8 +78,8 @@ export default function Home() {
 
   //Limpiar lenis
   return () => {
-    lenis.destroy()
     gsap.ticker.remove(update)
+    lenis.destroy()
   }
 
     }, [])
