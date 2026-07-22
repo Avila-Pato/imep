@@ -10,7 +10,7 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-const ThirdSection = () => {
+const ParallexPhoto = () => {
   useEffect(() => {
     const lenis = new Lenis();
     lenis.on("scroll", ScrollTrigger.update);
@@ -52,7 +52,7 @@ const ThirdSection = () => {
         yPercent: -50,
         width: 400,
         height: 400,
-        borderRadius: 0,
+        borderRadius: 10,
       });
       gsap.set(".hero-header", {
         xPercent: -50,
@@ -217,16 +217,13 @@ const ThirdSection = () => {
       style={{ backgroundImage: "url('/w-bg.jpg')" }} >
           
       <section className="hero-parallex section-parallex " >
-        <div className="hero-img">
-         
-          <div className="hero-img-inner">
+        <div className="hero-img ">
             <Image
               src="/assets/img/1.jpg"
               alt=""
               fill
-              sizes="(max-width: 768px) 95vw, 80vw"
+              className="object-cover"
             />
-          </div>
           <div className="hero-header">
             <h1 className="h1-parallex font-luxury">Templo Imep Central</h1>
           </div>
@@ -240,7 +237,7 @@ const ThirdSection = () => {
         </div>
       </section>
 
-      <section className="about-parallex section-parallex " >
+      <section className="about-parallex section-parallex  " >
         <div className="about-header">
           <h3 className="about-subtitle font-luxury">
             Un lugar para crecer en la palabra, servir con amor y vivir en
@@ -308,4 +305,4 @@ const ThirdSection = () => {
   );
 };
 
-export default ThirdSection;
+export default ParallexPhoto;
