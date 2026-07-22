@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import { useGSAP } from "@gsap/react";
-import ThirdSection from "./ThirdSection";
+import ThirdSection from "../components/ArrowDecorative";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -268,8 +268,6 @@ const SecondSection = () => {
         </section>
       </main>
 
-      {/* ── Tercera sección ──────────────────────────────────────────── */}
-      <ThirdSection />
     </>
   );
 };

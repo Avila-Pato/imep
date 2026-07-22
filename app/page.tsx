@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import gsap from "gsap";
-import { useEffect, useEffectEvent } from "react";
+import { useEffect } from "react";
 import { SplitText } from "gsap/all";
 import Navbar from "./components/navbar";
 import SecondSection from "./sections/SecondSection";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ArrowDecorative from "./components/ArrowDecorative";
+import ThirdSection from "./sections/ThirdSection";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
@@ -161,8 +163,12 @@ export default function Home() {
         </div>
       </div>
     </main>
+    {/* ── Segunda sección ───────────────────────────────────────────── */}
     <SecondSection />
-    
+      {/* ── Tercera sección ──────────────────────────────────────────── */}
+      <ArrowDecorative />
+      {/* ──── Cuarta sección ───────────────────────────────────────── */}
+      <ThirdSection />
     </>
   );
 }
