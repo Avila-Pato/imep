@@ -68,7 +68,9 @@ const FourthSection = () => {
         <div className="absolute left-12 top-22 z-20 w-full max-w-sm font-luxury flex flex-col gap-3">
           
           {/* 1. CAJA SUPERIOR: Badge + Título */}
-          <div className="flex items-center justify-start gap-2 rounded-lg bg-[#C7C8A3]/30 px-3 py-2 backdrop-blur-xs border border-white/10 shadow-lg">
+          <div className="flex items-center justify-start gap-2 rounded-lg bg-[#C7C8A3]/30 px-3 py-2 backdrop-blur-xs border border-white/10 shadow-lg"
+            style={{ padding: "3px"}}
+          >
             <span className="flex items-center gap-1.5 rounded bg-lime-500/20 px-2 py-0.5 text-[13px]
              font-semibold text-lime-400 border border-lime-400/30 shrink-0">
               <span className="h-2 w-2 rounded-full bg-lime-400 animate-pulse" />
@@ -80,7 +82,7 @@ const FourthSection = () => {
           </div>
 
           {/* 2. CAJA INFERIOR: Descripción con padding p-6 para dar espacio al texto */}
-          <div className="rounded-2xl bg-[#C7C8A3]/30  backdrop-blur-xs border border-white/10 shadow-lg " style={{ padding: "1rem"}}>
+          <div className="rounded-2xl bg-[#C7C8A3]/30  backdrop-blur-xs border border-white/10 shadow-lg " style={{ padding: "0.9rem"}}>
             <p className="text-[15px] leading-relaxed text-slate-100">
               {activeItem.description}
             </p>
