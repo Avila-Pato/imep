@@ -10,6 +10,7 @@ import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ArrowDecorative from "./components/ArrowDecorative";
 import ThirdSection from "./sections/ThirdSection";
+import FourthSection from "./sections/FourthSection";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
@@ -165,10 +166,12 @@ export default function Home() {
     </main>
     {/* ── Segunda sección ───────────────────────────────────────────── */}
     <SecondSection />
-      {/* ── Tercera sección ──────────────────────────────────────────── */}
+    {/* ──── Flecha decorativa ───────────────────────────────────────── */}
       <ArrowDecorative />
-      {/* ──── Cuarta sección ───────────────────────────────────────── */}
+      {/* ── Tercera sección ──────────────────────────────────────────── */}
       <ThirdSection />
+      {/* ──── Cuarta sección ───────────────────────────────────────── */}
+      <FourthSection />
     </>
   );
 }
