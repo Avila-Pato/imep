@@ -94,7 +94,7 @@ const FourthSection = () => {
             <button
               onClick={handleNext}
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full
-                bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3]"
+                bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3] border-2 border-[#C7C8A3]/30"
             >
               <span className="text-md -rotate-90 active:scale-45">
                 ➤
@@ -103,7 +103,7 @@ const FourthSection = () => {
             <button
               onClick={handlePrev} 
               className="flex h-8 w-8 cursor-pointer rotate-180 items-center justify-center rounded-full
-                bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3]"
+                bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3] border-2 border-[#C7C8A3]/30"
             >
               <span className="text-md -rotate-90 active:scale-45">
                 ➤
