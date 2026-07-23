@@ -186,7 +186,7 @@ const SecondSection = () => {
 
         {/* Galería */}
         <section
-          className="gallery-section  flex justify-center h-screen overflow-hidden w-[100%]"
+          className="gallery-section  flex justify-center h-screen overflow-hidden w-full"
           ref={stickyContainer}
         >
           <div className="gallery-grid w-[80%]">
@@ -203,7 +203,7 @@ const SecondSection = () => {
                 <div
                   key={i}
                   className="gallery-slide absolute inset-0 "
-                  style={{ transform: `translateX(${(i - 4) * 1000}%)` }}
+                  style={{ transform: `translateX(${(i - 4) * 100}%)` }}
                 >
                   <Image src={src} alt={`Imagen ${i + 1}`} fill sizes="60vw" className="object-cover " />
                 </div>
