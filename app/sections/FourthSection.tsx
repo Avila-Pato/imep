@@ -64,7 +64,7 @@ const FourthSection = () => {
         {/* Overlay oscuro */}
         <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
-        {/* 🟢 TARJETA SUPERIOR IZQUIERDA (Estilo HUD Cyberpunk) */}
+        {/* TARJETA SUPERIOR IZQUIERDA (Estilo HUD Cyberpunk) */}
         <div className="absolute left-12 top-22 z-20 w-full max-w-sm font-luxury flex flex-col gap-3">
           
           {/* 1. CAJA SUPERIOR: Badge + Título */}
@@ -87,9 +87,7 @@ const FourthSection = () => {
               {activeItem.description}
             </p>
           </div>
-
         </div>
-
         {/* CONTROLES Y RUEDA */}
         <div className="absolute -right-52 top-1/2 flex -translate-y-1/2 items-center">
           <div className="mr-6 flex flex-col gap-3 z-10">
