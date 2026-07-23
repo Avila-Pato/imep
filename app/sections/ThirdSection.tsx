@@ -216,13 +216,13 @@ const ParallexPhoto = () => {
     <main className="relative w-full bg-cover bg-center bg-fixed " 
       style={{ backgroundImage: "url('/w-bg.jpg')" }} >
           
-      <section className="hero-parallex section-parallex " >
-        <div className="hero-img ">
+      <section className="hero-parallex section-parallex  " >
+        <div className="hero-img  ">
             <Image
               src="/assets/img/1.jpg"
               alt=""
               fill
-              className="object-cover"
+              className="object-cover rounded-2xl"
             />
           <div className="hero-header">
             <h1 className="h1-parallex font-luxury">Templo Imep Central</h1>

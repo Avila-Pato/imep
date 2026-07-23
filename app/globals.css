@@ -271,6 +271,9 @@
   height: 400px;
   overflow: hidden;
   z-index: 0;
+
+  /* Sin transform aqui: GSAP toma ownership con xPercent/yPercent desde el primer frame */
+  will-change: transform, opacity, width, height;
 }
 
 .hero-img .hero-header {
@@ -323,9 +326,9 @@
   line-height: 1.15;
   white-space: nowrap;
 
-  background: rgba(0, 0, 0, 0.70);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #c7c8a1;
+  background: rgba(199, 200, 161, 0.5);
+  
   padding: 1rem 1.75rem;
   border-radius: 4px;
 
@@ -346,9 +349,10 @@
   text-align: left;
 
   /* fondo oscuro + glass: legible sobre cualquier zona de la foto */
-  background: rgba(0, 0, 0, 0.70);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  
+  background: #c7c8a1;
+  background: rgba(199, 200, 161, 0.5);
+
   padding: 1.25rem 1.5rem 1.25rem 1.75rem;
   border-radius: 4px;
 
@@ -476,5 +480,6 @@
     padding: 2rem;
   }
 
+  
   
 }

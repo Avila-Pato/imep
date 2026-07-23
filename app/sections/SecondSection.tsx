@@ -194,18 +194,19 @@ const SecondSection = () => {
               <Image src="/assets/img/1.jpg" alt="Imagen 1" fill sizes="20vw" className="object-cover " />
             </div>
             <div className="g-img2">
-              <Image src="/assets/img/2.jpg" alt="Imagen 2" fill sizes="20vw" className="object-cover" />
+              <Image src="/assets/img/2.jpg" alt="Imagen 2" fill sizes="20vw"   />
             </div>
 
             {/* img3 — todas las imgs apiladas para el slider */}
-            <div className="g-img3 ">
+            <div className="g-img3">
               {IMGS.map((src, i) => (
                 <div
                   key={i}
                   className="gallery-slide absolute inset-0 "
-                  style={{ transform: `translateX(${(i - 4) * 100}%)` }}
+                  style={{ transform: `translateX(${(i - 4) * 100}%)`}}
+                  
                 >
-                  <Image src={src} alt={`Imagen ${i + 1}`} fill sizes="60vw" className="object-cover " />
+                  <Image src={src} alt={`Imagen ${i + 1}`} fill sizes="60vw" className="object-cover" />
                 </div>
               ))}
 
