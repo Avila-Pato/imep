@@ -17,7 +17,7 @@ const FourthSection = () => {
     audio.play().catch(() => {
       console.error("Error al reproducir el sonido");
     });
-  }, [])
+  }, []);
 
   const handleNext = () => {
     playClickSound();
@@ -64,25 +64,28 @@ const FourthSection = () => {
         {/* Overlay oscuro */}
         <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
-        {/*  TARJETA SUPERIOR IZQUIERDA (Estilo HUD Cyberpunk) */}
-        <div className="absolute left-12 top-22 p-12  max-w-sm rounded bg-[#C7C8A3]/30  backdrop-blur-2xl  border border-white/10 shadow-lg font-luxury ">
-          {/* Encabezado: Badge + Título */}
-          <div className="mb-2 flex items-center gap-12 ">
-            <span className="flex items-center gap-1.5 rounded bg-lime-500/20  px-2 py-0.5 text-[13px]
-             font-semibold text-lime-400 border border-lime-400/30">
+        {/* 🟢 TARJETA SUPERIOR IZQUIERDA (Estilo HUD Cyberpunk) */}
+        <div className="absolute left-12 top-22 z-20 w-full max-w-sm font-luxury flex flex-col gap-3">
+          
+          {/* 1. CAJA SUPERIOR: Badge + Título */}
+          <div className="flex items-center justify-start gap-2 rounded-lg bg-[#C7C8A3]/30 px-3 py-2 backdrop-blur-xs border border-white/10 shadow-lg">
+            <span className="flex items-center gap-1.5 rounded bg-lime-500/20 px-2 py-0.5 text-[13px]
+             font-semibold text-lime-400 border border-lime-400/30 shrink-0">
               <span className="h-2 w-2 rounded-full bg-lime-400 animate-pulse" />
               {activeItem.badge}
             </span>
-            <h2 className="text-xs font-bold tracking-widest  text-white uppercase ">
+            <h2 className="text-xs font-bold tracking-widest text-white uppercase truncate">
               {activeItem.title}
             </h2>
           </div>
-          {/* Descripción */}
-          <div className="absolute top-8  flex flex-col gap-2 bg-[#C7C8A3]/30 ">
-          <p className="text-[16px] leading-relaxed  ">
-            {activeItem.description}
-          </p>
+
+          {/* 2. CAJA INFERIOR: Descripción con padding p-6 para dar espacio al texto */}
+          <div className="rounded-2xl bg-[#C7C8A3]/30  backdrop-blur-xs border border-white/10 shadow-lg " style={{ padding: "1rem"}}>
+            <p className="text-[15px] leading-relaxed text-slate-100">
+              {activeItem.description}
+            </p>
           </div>
+
         </div>
 
         {/* CONTROLES Y RUEDA */}
@@ -91,19 +94,18 @@ const FourthSection = () => {
             <button
               onClick={handleNext}
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full
-               bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3] "
+                bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3]"
             >
-              <span className="text-md -rotate-90 active:scale-45 ">
-               ➤
-
+              <span className="text-md -rotate-90 active:scale-45">
+                ➤
               </span>
             </button>
             <button
               onClick={handlePrev} 
               className="flex h-8 w-8 cursor-pointer rotate-180 items-center justify-center rounded-full
-               bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3]   "
+                bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3]"
             >
-              <span className="text-md -rotate-90 active:scale-45 ">
+              <span className="text-md -rotate-90 active:scale-45">
                 ➤
               </span>
             </button>
