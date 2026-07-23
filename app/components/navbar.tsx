@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar-gradient fixed top-0 left-0 right-0 z-50 flex items-center justify-between">
+      <nav className="navbar-gradient fixed top-0 left-0 right-0 z-40 flex items-center justify-between">
         <Image alt="IMEP logo" width={100} height={100} src="/logo1.png"
           className="hidden md:block sm:w-20 sm:h-20 md:w-18.5 md:h-18.5" />
 
