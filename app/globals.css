@@ -395,6 +395,12 @@
   text-align: center;
   padding: 4rem 4rem 2rem;
   gap: 1.5rem;
+   /* background: url("/Line.png") center center / cover no-repeat;
+  background-attachment: fixed; */
+}
+.section-about {
+   background: url("/Line.png") center center / cover no-repeat;
+  background-attachment: fixed;
 }
 
 .about-subtitle {

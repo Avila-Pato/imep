@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import RevealLayout from "./components/RevealLayout";
 
 
 
@@ -25,19 +26,17 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
+
   return (
     <html
       lang="en"
       className={`${luxurious.variable} ${pinyon.variable} ${voyage.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {/* <Navbar /> */}
-        {children}
+        {/* <RevealLayout> */}
+          {/* </RevealLayout> */}
+          {children}
         </body>
     </html>
   );

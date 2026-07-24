@@ -237,7 +237,8 @@ const ParallexPhoto = () => {
         </div>
       </section>
 
-      <section className="about-parallex section-parallex  " >
+      <section className="about-parallex section-parallex section-about"
+      >
         <div className="about-header">
           <h3 className="about-subtitle font-luxury">
             Un lugar para crecer en la palabra, servir con amor y vivir en
@@ -253,6 +254,7 @@ const ParallexPhoto = () => {
             de nuestra comunidad.
           </p>
         </div>
+        
         <div className="about-imgs-col">
           <div className="about-img-wrapper " id="about-imgs-col-1">
             <Image
