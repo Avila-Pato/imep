@@ -8,7 +8,7 @@ const FourthSection = () => {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   const anglePerStep = 360 / items.length;
-  const rotation = activeIndex * anglePerStep;
+  const rotation = -activeIndex * anglePerStep;
 
   const playClickSound = useCallback(() => {
     const audio = new Audio("/audio/audio-camara.mp3");
@@ -92,7 +92,8 @@ const FourthSection = () => {
         <div className="absolute -right-52 top-1/2 flex -translate-y-1/2 items-center">
           <div className="mr-6 flex flex-col gap-3 z-10">
             <button
-              onClick={handleNext}
+              
+              onClick={handlePrev} 
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full
                 bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3] border-2 border-[#C7C8A3]/30"
             >
@@ -101,7 +102,7 @@ const FourthSection = () => {
               </span>
             </button>
             <button
-              onClick={handlePrev} 
+            onClick={handleNext}
               className="flex h-8 w-8 cursor-pointer rotate-180 items-center justify-center rounded-full
                 bg-[#C7C8A3]/60 text-black transition hover:scale-110 hover:bg-[#C7C8A3] border-2 border-[#C7C8A3]/30"
             >

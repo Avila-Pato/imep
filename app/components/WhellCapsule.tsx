@@ -8,12 +8,12 @@ const WhellCapsule = ({ rotation = 0, activeIndex = 0 }) => {
   const ticksRadius = 180; // Radio de las muecas
 
   const dotsOffsetAngle = 130; // Ángulo de desplazamiento del anillo de botones
-  const cardsOffsetAngle = 58; // Ángulo de desplazamiento de las tarjetas
+  const cardsOffsetAngle = 130; // Ángulo de desplazamiento de las tarjetas
   const ticksOffsetAngle = 40; // Ángulo de desplazamiento de las muecas
 
   const angleStep = 360 / items.length;
   const baseRotation = 50;
-  const currentRotation = baseRotation + rotation;
+  const currentRotation = baseRotation + rotation; // rotación actual de la rueda giratoria
 
   //  ÁNGULO Y POSICIÓN ESTÁTICA DEL PUNTO VERDE
   // Se calcula usando baseRotation + dotsOffsetAngle para que coincida exactamente
