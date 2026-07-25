@@ -158,7 +158,7 @@ export default function Home() {
               width={900}
               height={900}
               priority
-              className="scale-100 md:scale-120"
+              className="scale-120 md:scale-120"
             />
           </div>
         </div>

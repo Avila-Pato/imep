@@ -31,7 +31,7 @@ const Navbar = () => {
 
         {/* Hamburguesa / X móvil */}
         <button
-          className="md:hidden text-white/80 hover:text-white transition-colors"
+          className="md:hidden text-white/80 hover:text-white transition-colors h-30 flex justify-end w-full "
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
         >
@@ -40,7 +40,8 @@ const Navbar = () => {
               <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" 
+            className="h-10 w-10">
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
