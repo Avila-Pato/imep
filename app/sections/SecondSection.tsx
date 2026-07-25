@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import { useGSAP } from "@gsap/react";
-import ThirdSection from "../components/ArrowDecorative";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -26,6 +25,15 @@ const SecondSection = () => {
   // ── Gallery scroll animation ──────────────────────────────────────────────
   useGSAP(() => {
     gsap.set(".g-img3", { clipPath: "inset(0% 0% 0% 0% round 4px)" });
+
+    //Setter para rapidos apuntados
+
+    const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (
+      v: number,
+    ) => void;
+    const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (
+      v: number,
+    ) => void;
 
     const isMobile = window.innerWidth < 768;
 
@@ -69,19 +77,68 @@ const SecondSection = () => {
         .to(".g-img5", { x: -120, y: 100, ease: "none", duration: 1 }, 0)
         .to(".g-img6", { x: 160, y: 80, ease: "none", duration: 1 }, 0)
         .to(".g-img7", { x: 150, y: -60, ease: "none", duration: 1 }, 0)
+
         .to(".g-img3", {
-          clipPath: "inset(50% 40% -30% 40% round 999px 999px 12px 12px)",
+          clipPath: "inset(40% 38% 0% 38% round 999px 999px 12px 12px)",
           ease: "none",
           duration: 2,
         })
-        .to(".g-btn-prev", { marginLeft: "42%", ease: "none", duration: 2, marginTop: "35%" }, "<")
-        .to(".g-btn-next", { marginRight: "42%", ease: "none", duration: 2, marginTop: "35%" }, "<")
+
+        //Nuevo bloque para la img se centre cuandos e scrolea
+        .to(
+          ".g-slide-img",
+          {
+            scale: 0.7,
+            transformOrigin: "center bottom",
+            objectFit: "cover",
+            ease: "none",
+            duration: 2,
+          },
+          "<",
+        )
+
+        .to(
+          ".g-btn-prev",
+          {
+            marginLeft: "42%",
+            ease: "none",
+            duration: 2,
+            marginTop: "35%",
+            width: "30px",
+            height: "30px",
+          },
+          "<",
+        )
+        .to(
+          ".g-btn-next",
+          {
+            marginRight: "42%",
+            ease: "none",
+            duration: 2,
+            marginTop: "35%",
+            width: "30px",
+            height: "30px",
+          },
+          "<",
+        )
         .to(
           [".g-img1", ".g-img2", ".g-img4", ".g-img5", ".g-img6", ".g-img7"],
           { opacity: 0, ease: "none", duration: 0.7 },
           "<0.2",
         );
     }
+
+    return () => {
+      if (isMobile) {
+        gsap.killTweensOf(".g-img3");
+        gsap.killTweensOf(".g-img1");
+        gsap.killTweensOf(".g-img2");
+        gsap.killTweensOf(".g-img4");
+        gsap.killTweensOf(".g-img5");
+        gsap.killTweensOf(".g-img6");
+        gsap.killTweensOf(".g-img7");
+      }
+    };
   });
 
   // ── Cursor ───────────────────────────────────────────────────────────────
@@ -89,8 +146,14 @@ const SecondSection = () => {
     const overlay = document.querySelector(".img-overlay") as HTMLElement;
     gsap.set(".cursor", { opacity: 0 });
 
-    const xTo = gsap.quickTo(".cursor", "x", { duration: 0.35, ease: "power3" });
-    const yTo = gsap.quickTo(".cursor", "y", { duration: 0.35, ease: "power3" });
+    const xTo = gsap.quickTo(".cursor", "x", {
+      duration: 0.35,
+      ease: "power3",
+    });
+    const yTo = gsap.quickTo(".cursor", "y", {
+      duration: 0.35,
+      ease: "power3",
+    });
 
     const moveCursor = (e: MouseEvent) => {
       xTo(e.clientX);
@@ -191,10 +254,22 @@ const SecondSection = () => {
         >
           <div className="gallery-grid w-[80%]">
             <div className="g-img1">
-              <Image src="/assets/img/1.jpg" alt="Imagen 1" fill sizes="20vw" className="object-cover " />
+              <Image
+                src="/assets/img/1.jpg"
+                alt="Imagen 1"
+                fill
+                sizes="20vw"
+                className="object-cover "
+              />
             </div>
             <div className="g-img2">
-              <Image src="/assets/img/2.jpg" alt="Imagen 2" fill sizes="20vw"   />
+              <Image
+                src="/assets/img/2.jpg"
+                alt="Imagen 2"
+                fill
+                sizes="20vw "
+                className="object-cover"
+              />
             </div>
 
             {/* img3 — todas las imgs apiladas para el slider */}
@@ -202,51 +277,105 @@ const SecondSection = () => {
               {IMGS.map((src, i) => (
                 <div
                   key={i}
-                  className="gallery-slide absolute inset-0 "
-                  style={{ transform: `translateX(${(i - 4) * 100}%)`}}
-                  
+                  className="gallery-slide absolute inset-0 overflow-hidden"
+                  style={{ transform: `translateX(${(i - 4) * 100}%)` }}
                 >
-                  <Image src={src} alt={`Imagen ${i + 1}`} fill sizes="60vw" className="object-cover" />
+                  <Image
+                    src={src}
+                    alt={`Imagen ${i + 1}`}
+                    fill
+                    sizes="60vw"
+                    className={`object-cover g-slide-img ${
+                      src === "/assets/img/2.jpg"
+                        ? "object-[center_20%]"
+                        : "object-center"
+                    }`}
+                  />
                 </div>
               ))}
-
               {/* Botones: en móvil quedan pegados al fondo del slider para comodidad del pulgar */}
               <div
-                className="absolute inset-0 flex items-end md:items-center justify-center z-20 pointer-events-none pb-4 md:pb-0"
+                className="absolute inset-16 flex justify-between  items-end md:items-center  z-20 pointer-events-none pb-4 md:pb-0"
                 style={{ gap: "26px" }}
               >
                 <button
-                  className="g-btn-prev pointer-events-auto w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
+                  className="g-btn-prev pointer-events-auto w-9 h-9 
+                  rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
                   onClick={() => {
                     const prev = activeIdxRef.current;
                     const next = (prev - 1 + IMGS.length) % IMGS.length;
-                    const slides = document.querySelectorAll<HTMLElement>(".gallery-slide");
+                    const slides =
+                      document.querySelectorAll<HTMLElement>(".gallery-slide");
                     gsap.killTweensOf([slides[prev], slides[next]]);
-                    gsap.set(slides[next], { x: "100%", opacity: 1, clipPath: "none", scale: 1 });
-                    gsap.to(slides[prev], { x: "-100%", duration: 0.55, ease: "power2.inOut" });
-                    gsap.to(slides[next], { x: "0%", duration: 0.55, ease: "power2.inOut" });
+                    gsap.set(slides[next], {
+                      x: "100%",
+                      opacity: 1,
+                      clipPath: "none",
+                      scale: 1,
+                    });
+                    gsap.to(slides[prev], {
+                      x: "-100%",
+                      duration: 0.55,
+                      ease: "power2.inOut",
+                    });
+                    gsap.to(slides[next], {
+                      x: "0%",
+                      duration: 0.55,
+                      ease: "power2.inOut",
+                    });
                     activeIdxRef.current = next;
                   }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <polyline points="15 18 9 12 15 6" />
                   </svg>
-                  
                 </button>
                 <button
                   className="g-btn-next pointer-events-auto w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
                   onClick={() => {
                     const prev = activeIdxRef.current;
                     const next = (prev + 1) % IMGS.length;
-                    const slides = document.querySelectorAll<HTMLElement>(".gallery-slide");
+                    const slides =
+                      document.querySelectorAll<HTMLElement>(".gallery-slide");
                     gsap.killTweensOf([slides[prev], slides[next]]);
-                    gsap.set(slides[next], { x: "-100%", opacity: 1, clipPath: "none", scale: 1 });
-                    gsap.to(slides[prev], { x: "100%", duration: 0.55, ease: "power2.inOut" });
-                    gsap.to(slides[next], { x: "0%", duration: 0.55, ease: "power2.inOut" });
+                    gsap.set(slides[next], {
+                      x: "-100%",
+                      opacity: 1,
+                      clipPath: "none",
+                      scale: 1,
+                    });
+                    gsap.to(slides[prev], {
+                      x: "100%",
+                      duration: 0.55,
+                      ease: "power2.inOut",
+                    });
+                    gsap.to(slides[next], {
+                      x: "0%",
+                      duration: 0.55,
+                      ease: "power2.inOut",
+                    });
                     activeIdxRef.current = next;
                   }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
@@ -254,21 +383,44 @@ const SecondSection = () => {
             </div>
 
             <div className="g-img4">
-              <Image src="/assets/img/4.jpg" alt="Imagen 4" fill sizes="20vw" className="object-cover" />
+              <Image
+                src="/assets/img/4.jpg"
+                alt="Imagen 4"
+                fill
+                sizes="20vw"
+                className="object-cover "
+              />
             </div>
             <div className="g-img5">
-              <Image src="/assets/img/3.jpg" alt="Imagen 5" fill sizes="20vw" className="object-cover" />
+              <Image
+                src="/assets/img/3.jpg"
+                alt="Imagen 5"
+                fill
+                sizes="20vw"
+                className="object-cover"
+              />
             </div>
             <div className="g-img6">
-              <Image src="/assets/img/6.jpg" alt="Imagen 6" fill sizes="20vw" className="object-cover" />
+              <Image
+                src="/assets/img/6.jpg"
+                alt="Imagen 6"
+                fill
+                sizes="20vw"
+                className="object-cover"
+              />
             </div>
             <div className="g-img7">
-              <Image src="/assets/img/7.jpg" alt="Imagen 7" fill sizes="20vw" className="object-cover" />
+              <Image
+                src="/assets/img/7.jpg"
+                alt="Imagen 7"
+                fill
+                sizes="20vw"
+                className="object-cover"
+              />
             </div>
           </div>
         </section>
       </main>
-
     </>
   );
 };
