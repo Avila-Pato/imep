@@ -26,119 +26,138 @@ const SecondSection = () => {
   useGSAP(() => {
     gsap.set(".g-img3", { clipPath: "inset(0% 0% 0% 0% round 4px)" });
 
-    //Setter para rapidos apuntados
+    const mm = gsap.matchMedia();
 
-    const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (
-      v: number,
-    ) => void;
-    const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (
-      v: number,
-    ) => void;
+    mm.add(
+      {
+        isDesktop: "(min-width: 768px)",
+        isMobile: "(max-width: 767px)",
+      },
+      (context) => {
+        const { isDesktop, isMobile } = context.conditions as {
+          isDesktop: boolean;
+          isMobile: boolean;
+        };
 
-    const isMobile = window.innerWidth < 768;
-
-    const st = {
-      trigger: stickyContainer.current,
-      start: isMobile ? "-=50%" : "top top",
-      end: isMobile ? "+=50%" : "+=200%",
-      scrub: 2,
-      pin: true,
-      pinSpacing: true,
-    };
-
-    if (isMobile) {
-      // Mobile: zoom suave en img central + desvanece las laterales
-      gsap
-        .timeline({ scrollTrigger: st })
-        .to(".g-img3", {
-          scale: 1.15,
-          ease: "none",
-          duration: 1,
-          transformOrigin: "center center",
-        })
-        .to(
-          [".g-img1", ".g-img2", ".g-img4", ".g-img5", ".g-img6", ".g-img7"],
-          { opacity: 0, ease: "none", duration: 0.4 },
-          0,
-        );
-    } else {
-      // Desktop: dispersión + arco + botones siguiendo el borde
-      gsap
-        .timeline({ scrollTrigger: st })
-        .to(".g-img3", {
-          scale: 1.8,
-          ease: "none",
-          duration: 1,
-          transformOrigin: "center 2%",
-        })
-        .to(".g-img1", { x: -160, y: -40, ease: "none", duration: 1 }, 0)
-        .to(".g-img2", { x: -180, y: 80, ease: "none", duration: 1 }, 0)
-        .to(".g-img4", { x: 140, y: -80, ease: "none", duration: 1 }, 0)
-        .to(".g-img5", { x: -120, y: 100, ease: "none", duration: 1 }, 0)
-        .to(".g-img6", { x: 160, y: 80, ease: "none", duration: 1 }, 0)
-        .to(".g-img7", { x: 150, y: -60, ease: "none", duration: 1 }, 0)
-
-        .to(".g-img3", {
-          clipPath: "inset(40% 38% 0% 38% round 999px 999px 12px 12px)",
-          ease: "none",
-          duration: 2,
-        })
-
-        //Nuevo bloque para la img se centre cuandos e scrolea
-        .to(
-          ".g-slide-img",
-          {
-            scale: 0.7,
-            transformOrigin: "center bottom",
-            objectFit: "cover",
-            ease: "none",
-            duration: 2,
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: stickyContainer.current,
+            start: isDesktop ? "top top" : "-=50%",
+            end: isDesktop ? "+=200%" : "+=50%",
+            scrub: 2,
+            pin: true,
+            pinSpacing: true,
           },
-          "<",
-        )
+        });
 
-        .to(
-          ".g-btn-prev",
-          {
-            marginLeft: "42%",
+        if (isDesktop) {
+          // ── DESKTOP ANIMATION ───────────────────────────────────────────
+          tl.to(".g-img3", {
+            scale: 1.8,
             ease: "none",
-            duration: 2,
-            marginTop: "35%",
-            width: "30px",
-            height: "30px",
-          },
-          "<",
-        )
-        .to(
-          ".g-btn-next",
-          {
-            marginRight: "42%",
+            duration: 1,
+            transformOrigin: "center 2%",
+          })
+            .to(".g-img1", { x: -160, y: -40, ease: "none", duration: 1 }, 0)
+            .to(".g-img2", { x: -180, y: 80, ease: "none", duration: 1 }, 0)
+            .to(".g-img4", { x: 140, y: -80, ease: "none", duration: 1 }, 0)
+            .to(".g-img5", { x: -120, y: 100, ease: "none", duration: 1 }, 0)
+            .to(".g-img6", { x: 160, y: 80, ease: "none", duration: 1 }, 0)
+            .to(".g-img7", { x: 150, y: -60, ease: "none", duration: 1 }, 0)
+            .to(".g-img3", {
+              clipPath: isMobile 
+      ? "inset(20% 15% 0% 15% round 999px 999px 12px 12px)" 
+      : "inset(40% 38% 0% 38% round 999px 999px 12px 12px)",
+              ease: "none",
+              duration: 2,
+            })
+            .to(
+              ".g-slide-img",
+              {
+                scale: 0.7,
+                transformOrigin: "center bottom",
+                objectFit: "cover",
+                ease: "none",
+                duration: 2,
+              },
+              "<",
+            )
+            .to(
+              ".g-btn-prev",
+              {
+                marginLeft: isMobile ? "30%" : "40%",
+                ease: "none",
+                duration: 2,
+                marginTop: "35%",
+                width: "30px",
+                height: "30px",
+              },
+              "<",
+            )
+            .to(
+              ".g-btn-next",
+              {
+                marginRight: isMobile ? "30%" : "40%",
+                ease: "none",
+                duration: 2,
+                marginTop: "35%",
+                width: "30px",
+                height: "30px",
+              },
+              "<",
+            )
+            .to(
+              [
+                ".g-img1",
+                ".g-img2",
+                ".g-img4",
+                ".g-img5",
+                ".g-img6",
+                ".g-img7",
+              ],
+              { opacity: 0, ease: "none", duration: 0.7 },
+              "<0.2",
+            );
+        } else {
+          // ── MOBILE ANIMATION ────────────────────────────────────────────
+          tl.to(".g-img3", {
+            scale: 0.8,
             ease: "none",
-            duration: 2,
-            marginTop: "35%",
-            width: "30px",
-            height: "30px",
-          },
-          "<",
-        )
-        .to(
-          [".g-img1", ".g-img2", ".g-img4", ".g-img5", ".g-img6", ".g-img7"],
-          { opacity: 0, ease: "none", duration: 0.7 },
-          "<0.2",
-        );
-    }
+            duration: 1,
+            transformOrigin: "center top",
+          })
+            .to(
+              [
+                ".g-img1",
+                ".g-img2",
+                ".g-img4",
+                ".g-img5",
+                ".g-img6",
+                ".g-img7",
+              ],
+              { opacity: 0, ease: "none", duration: 0.4 },
+              0,
+            )
+            .to(".btn-position", {
+              marginTop: "95%",
+              marginLeft: "25%",
+              ease: "none",
+              duration: 2,
+              width: "50%",
+              height: "50px",
+              gap: "10px",
+            })
 
-    return () => {
-      if (isMobile) {
-        gsap.killTweensOf(".g-img3");
-        gsap.killTweensOf(".g-img1");
-        gsap.killTweensOf(".g-img2");
-        gsap.killTweensOf(".g-img4");
-        gsap.killTweensOf(".g-img5");
-        gsap.killTweensOf(".g-img6");
-        gsap.killTweensOf(".g-img7");
-      }
-    };
+            .to(".g-img3", {
+              marginTop: "30%",
+              clipPath: "inset(50% 28% 0% 28% round 50% 50% 12px 12px)",
+              ease: "none",
+              duration: 2,
+              objectFit: "cover",
+            });
+        }
+      },
+    );
   });
 
   // ── Cursor ───────────────────────────────────────────────────────────────
@@ -190,7 +209,6 @@ const SecondSection = () => {
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    // GSAP ticker pasa segundos — Lenis espera ms
     const tickerCallback = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
@@ -237,7 +255,7 @@ const SecondSection = () => {
       <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed z-10'>
         {/* Texto */}
         <section className="w-full h-[30vh] items-center flex justify-center flex-col overflow-hidden">
-          <h1 className="h1_text font-voyager tracking-wide text-stone-200 lg:text-6xl text-xl text-center">
+          <h1 className="h1_text font-voyager tracking-wide text-stone-200 lg:text-6xl md:text-3xl text-xl text-center">
             Por tanto, aceptaos los unos a los otros,
             <br />
             como también Cristo nos aceptó.
@@ -249,7 +267,7 @@ const SecondSection = () => {
 
         {/* Galería */}
         <section
-          className="gallery-section  flex justify-center h-screen overflow-hidden w-full"
+          className="gallery-section flex justify-center h-screen overflow-hidden w-full"
           ref={stickyContainer}
         >
           <div className="gallery-grid w-[80%]">
@@ -259,7 +277,7 @@ const SecondSection = () => {
                 alt="Imagen 1"
                 fill
                 sizes="20vw"
-                className="object-cover "
+                className="object-cover"
               />
             </div>
             <div className="g-img2">
@@ -267,7 +285,7 @@ const SecondSection = () => {
                 src="/assets/img/2.jpg"
                 alt="Imagen 2"
                 fill
-                sizes="20vw "
+                sizes="20vw"
                 className="object-cover"
               />
             </div>
@@ -293,14 +311,15 @@ const SecondSection = () => {
                   />
                 </div>
               ))}
-              {/* Botones: en móvil quedan pegados al fondo del slider para comodidad del pulgar */}
+              {/* Botones */}
               <div
-                className="absolute inset-16 flex justify-between  items-end md:items-center  z-20 pointer-events-none pb-4 md:pb-0"
-                style={{ gap: "26px" }}
+                className=" btn-position md:absolute sm:flex  lg:inset-16 md:inset-2  flex md:justify-between justify-center  
+                md:items-center z-20 pointer-events-none pb-4 md:pb-0  "
               >
                 <button
-                  className="g-btn-prev pointer-events-auto w-9 h-9 
-                  rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
+                  className="g-btn-prev pointer-events-auto md:w-9 md:h-9 w-12 h-12 rounded-full
+                   bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center
+                    hover:bg-black/90 transition-colors cursor-pointer"
                   onClick={() => {
                     const prev = activeIdxRef.current;
                     const next = (prev - 1 + IMGS.length) % IMGS.length;
@@ -340,7 +359,8 @@ const SecondSection = () => {
                   </svg>
                 </button>
                 <button
-                  className="g-btn-next pointer-events-auto w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
+                  className="g-btn-next pointer-events-auto md:w-9 md:h-9 w-12 h-12 rounded-full
+                   bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/90 transition-colors cursor-pointer"
                   onClick={() => {
                     const prev = activeIdxRef.current;
                     const next = (prev + 1) % IMGS.length;
@@ -388,7 +408,7 @@ const SecondSection = () => {
                 alt="Imagen 4"
                 fill
                 sizes="20vw"
-                className="object-cover "
+                className="object-cover"
               />
             </div>
             <div className="g-img5">

@@ -151,14 +151,14 @@ export default function Home() {
           <div className="bee absolute xl:top-[56%]  lg:top-[23%] 
           md:top-[20%] md:left-[40%] left-[-5%] top-[-10%] lg:left-[43%] 
            xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2     
-           xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] sm:scale-125   z-[-1]">
+           xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] sm:scale-125   z-[-1] ">
             <Image
               alt="img"
               src="/assets/Bee.png"
               width={900}
               height={900}
               priority
-              className="scale-150 md:scale-none"
+              className="scale-110 md:scale-120"
             />
           </div>
         </div>
