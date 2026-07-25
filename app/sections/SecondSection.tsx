@@ -44,8 +44,8 @@ const SecondSection = () => {
             trigger: stickyContainer.current,
             start: isDesktop ? "top top" : "-=50%",
             end: isDesktop ? "+=200%" : "+=50%",
-            scrub: 2,
-            pin: true,
+            scrub: isDesktop ? 2 : false,
+            pin: isDesktop,
             pinSpacing: true,
           },
         });
@@ -149,8 +149,8 @@ const SecondSection = () => {
             })
 
             .to(".g-img3", {
-              marginTop: "30%",
-              clipPath: "inset(50% 28% 0% 28% round 50% 50% 12px 12px)",
+              marginTop: "0%",
+              // clipPath: "inset(50% 28% 0% 28% round 50% 50% 12px 12px)",
               ease: "none",
               duration: 2,
               objectFit: "cover",
