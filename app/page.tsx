@@ -172,6 +172,7 @@ export default function Home() {
       <ThirdSection />
       {/* ──── Cuarta sección ───────────────────────────────────────── */}
       <FourthSection />
+      {/* Seccion del MAPA */}
     </>
   );
 }

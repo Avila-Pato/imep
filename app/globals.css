@@ -64,6 +64,42 @@
   );
 }
 
+
+.img-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.img-background {
+  position: relative;
+}
+.img-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  z-index: 0;
+
+  mask-image: radial-gradient(
+    circle 240px at var(--x, 50%) var(--y, 50%),
+    transparent 0%,
+    black 100%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    circle 240px at var(--x, 50%) var(--y, 50%),
+    transparent 0%,
+    black 100%
+  );
+}
+
+.img-background > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* .img-overlay::after {
   content: "";
   position: absolute;
@@ -83,14 +119,10 @@
 
 
 
-.img-overlay > * {
-  position: relative;
-  z-index: 1;
-}
 
 
-
-.cursor {
+.cursor,
+.cursor-custom {
   position: fixed;
   top: 0;
   left: 0;
@@ -399,8 +431,8 @@
   background-attachment: fixed; */
 }
 .section-about {
-   background: url("/Line.png") center center / cover no-repeat;
-  background-attachment: fixed;
+   background: url("/assets/stone-wall.webp") center center / cover no-repeat;
+  
 }
 
 .about-subtitle {
