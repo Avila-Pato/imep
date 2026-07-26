@@ -99,7 +99,7 @@ export default function Home() {
       sm:-translate-y-20 xl:translate-y-0 xl:-translate-x-2 md:-translate-x-12 ">
       <div className="p_text_1 absolute lg:top-[55%] lg:left-[20%]
        xl:left-[12%] xl:top-[75%] sm:left-[10%] sm:top-[70%]
-        md:top-[60%] md:left-[10%]  top-[65%] left-[2%] xl:translate-x-48 
+        md:top-[60%] md:left-[10%]  top-[35%] left-[2%] xl:translate-x-48 
         2xl:translate-x-56 md:translate-x-20
        xl:-translate-y-60 md:-translate-y-45  
        z-30  text-stone-200 tracking-wide [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
@@ -115,7 +115,7 @@ export default function Home() {
 
       <div className=" p_text_2 absolute lg:top-[-10%] 
        xl:top-[3%] md:top-[-5%] 
-       top-[50%] left-[24%] sm:left-[30%] sm:top-[50%]
+       top-[20%] left-[24%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%] 
        z-5
        text-stone-200 xl:text-[9rem] lg:text-[8rem] 
@@ -137,9 +137,7 @@ export default function Home() {
 
       {/* imagen de cesped con obeja */}
 
-      <div className="shape absolute bottom-0 right-0 z-20  
-      
-      ">
+      <div className="shape absolute bottom-0 right-0 z-20 ">
         <div className="relative  ">
           <Image
             alt="img"
@@ -147,10 +145,10 @@ export default function Home() {
             width={1100}
             height={1100}
             loading="eager"
-            className="object-cover"
+            className="object-cover scale-175 -translate-y-1/2"
           />
           <div className="bee absolute xl:top-[56%]  lg:top-[23%] 
-          md:top-[20%] md:left-[40%] left-[-5%] top-[-5%] lg:left-[43%] 
+          md:top-[20%] md:left-[40%] left-[-5%] top-[-55%] lg:left-[43%] 
            xl:-translate-x-1/2 md:-translate-x-[35%]  xl:-translate-y-1/2     
            xl:scale-[1.6] lg:scale-[1.8] md:scale-[2.2] sm:scale-125   z-[-1] ">
             <Image
@@ -159,7 +157,7 @@ export default function Home() {
               width={900}
               height={900}
               priority
-              className="scale-120 md:scale-120"
+              className="scale-185 md:scale-120"
             />
           </div>
         </div>
