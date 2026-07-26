@@ -492,53 +492,53 @@ const ParallexPhoto = () => {
           </div>
 
           <div className="about-imgs-col">
-            <div className="about-img-wrapper" id="about-imgs-col-1">
-              <Image
-                src="/assets/img/2.jpg"
-                alt=""
-                width={300}
-                height={350}
-                className="img"
-              />
+              <div className="about-img-wrapper" id="about-imgs-col-1">
+                <Image
+                  src="/assets/img/2.jpg"
+                  alt=""
+                  width={300}
+                  height={350}
+                  className="img"
+                />
+              </div>
+              <div className="about-img-wrapper">
+                <Image
+                  src="/assets/img/3.jpg"
+                  alt=""
+                  width={300}
+                  height={400}
+                  className="img"
+                />
+              </div>
+              <div className="about-img-wrapper">
+                <Image
+                  src="/assets/img/4.jpg"
+                  alt=""
+                  width={300}
+                  height={500}
+                  className="img"
+                />
+              </div>
+              <div className="about-img-wrapper">
+                <Image
+                  src="/assets/img/5.jpg"
+                  alt=""
+                  width={300}
+                  height={300}
+                  className="img"
+                />
+              </div>
+              <div className="about-img-wrapper">
+                <Image
+                  src="/assets/img/5.jpg"
+                  alt=""
+                  width={300}
+                  height={300}
+                  className="img"
+                />
+              </div>
             </div>
-            <div className="about-img-wrapper">
-              <Image
-                src="/assets/img/3.jpg"
-                alt=""
-                width={300}
-                height={400}
-                className="img"
-              />
-            </div>
-            <div className="about-img-wrapper">
-              <Image
-                src="/assets/img/4.jpg"
-                alt=""
-                width={300}
-                height={500}
-                className="img"
-              />
-            </div>
-            <div className="about-img-wrapper">
-              <Image
-                src="/assets/img/5.jpg"
-                alt=""
-                width={300}
-                height={300}
-                className="img"
-              />
-            </div>
-            <div className="about-img-wrapper">
-              <Image
-                src="/assets/img/5.jpg"
-                alt=""
-                width={300}
-                height={300}
-                className="img"
-              />
-            </div>
-          </div>
-        </section>
+          </section>
       </div>
     </main>
   );
