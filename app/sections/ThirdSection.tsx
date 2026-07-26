@@ -127,8 +127,8 @@ mm.add(
         start: "top top",
         end: `+=${window.innerHeight * 1.5}`,
         pin: isDesktop,
-        pinSpacing: isDesktop,
-        scrub: isDesktop ? 2 : false,
+        scrub: isDesktop,
+        pinSpacing: true,
 
         onUpdate: ({ progress: p }) => {
           const copyP = Math.max(0, Math.min((p - 0.05) / 0.45, 1));
@@ -205,7 +205,7 @@ mm.add(
         end: `+=${window.innerHeight * 1.5}`,
         pin: isDesktop,
         pinSpacing: isDesktop,
-        scrub: isDesktop ? 1 : false,
+        scrub: isDesktop,
 
         onUpdate: ({ progress: p }) => {
           setHdrOp(Math.max(0, 1 - p / 0.4));
@@ -246,13 +246,14 @@ mm.add(
       const setHdrOp = gsap.quickSetter(".hero-header", "opacity") as (
         v: number,
       ) => void;
-
+// ANIMAION DE SCRROL APRA MOBILES
       const st = ScrollTrigger.create({
         trigger: ".hero-parallex",
         start: "top top",
         end: `+=${window.innerHeight * 1.5}`,
-        pin: true,
-        pinSpacing: true,
+        pin: false, // eecto sigue bajando
+        scrub: false, // efecto sigue bajando con el scroll y la seccion actual
+        pinSpacing: false,
         onUpdate: ({ progress: p }) => {
           setHdrOp(Math.max(0, 1 - p / 0.4));
           const imgP = Math.max(0, Math.min((p - 0.4) / 0.6, 1));
