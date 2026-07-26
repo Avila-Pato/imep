@@ -89,7 +89,7 @@ export default function Home() {
 
   return (
     <>
-    <main className="scene  w-full relative  h-[90vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
+    <main className="scene  w-full relative  h-[80vh] md:h-screen overflow-hidden bg-[url('/assets/landscape2.png')] bg-no-repeat bg-cover">
       {/* Gradiente inferior que fusiona con la sección siguiente */}
       <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-30" style={{ background: "linear-gradient(to bottom, transparent, black)" }} />
       <Navbar />
@@ -147,6 +147,7 @@ export default function Home() {
             width={1100}
             height={1100}
             loading="eager"
+            className="object-cover"
           />
           <div className="bee absolute xl:top-[56%]  lg:top-[23%] 
           md:top-[20%] md:left-[40%] left-[-5%] top-[-5%] lg:left-[43%] 
