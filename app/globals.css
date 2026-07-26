@@ -535,7 +535,7 @@
   }
 
   .about-imgs-col > * {
-    flex: 0 0 85%;
+    flex: 0 0 80%;
     scroll-snap-align: center;
   }
 
@@ -573,9 +573,9 @@
     flex: 0 0 80%;
     
     /* 2. CORRIGE ESTO: 'shrink: 0' no existe en CSS, la propiedad correcta es 'flex-shrink: 0' */
-    flex-shrink: 0; 
+    flex-shrink: 1; 
     
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
 
 }
