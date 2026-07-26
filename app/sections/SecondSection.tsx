@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
@@ -20,6 +20,7 @@ const IMGS = [
 
 const SecondSection = () => {
   const activeIdxRef = useRef(4);
+  const [activeSlide, setActiveSlide] = useState(4);
   const stickyContainer = useRef<HTMLDivElement | null>(null);
 
   // ── Gallery scroll animation ──────────────────────────────────────────────
@@ -377,20 +378,21 @@ const SecondSection = () => {
                         ease: "power2.inOut",
                       });
                     }
-                    activeIdxRef.current = next;
-                  }}
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="15 18 9 12 15 6" />
+                     activeIdxRef.current = next;
+                     setActiveSlide(next);
+                   }}
+                 >
+                   <svg
+                     width="14"
+                     height="14"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     strokeWidth="2"
+                     strokeLinecap="round"
+                     strokeLinejoin="round"
+                   >
+                     <polyline points="15 18 9 12 15 6" />
                   </svg>
                 </button>
                 <button
@@ -443,22 +445,35 @@ const SecondSection = () => {
                         ease: "power2.inOut",
                       });
                     }
-                    activeIdxRef.current = next;
-                  }}
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="9 18 15 12 9 6" />
+                     activeIdxRef.current = next;
+                     setActiveSlide(next);
+                   }}
+                 >
+                   <svg
+                     width="14"
+                     height="14"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     strokeWidth="2"
+                     strokeLinecap="round"
+                     strokeLinejoin="round"
+                   >
+                     <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
+              </div>
+
+              {/* ── Dots nav Solo para mobiles ────────────────────────── */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 pointer-events-none md:hidden">
+                {IMGS.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      i === activeSlide ? "bg-white w-6" : "bg-white/40"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
 

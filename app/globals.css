@@ -164,11 +164,15 @@
   /* solo el slider visible, ocupa todo */
   .g-img3 {
     position: relative;
-    width: 100%;
+    width: calc(100% - 16px);
     height: 100vw;
     min-height: 220px;
     grid-column: unset;
     grid-row: unset;
+    margin: 0 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .g-img1, .g-img2, .g-img4, .g-img5, .g-img6, .g-img7 {
@@ -178,7 +182,7 @@
   .gallery-section {
     overflow: hidden;
     }
- 
+  
 }
 
 .gallery-grid > div {
