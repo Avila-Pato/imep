@@ -44,7 +44,7 @@ const SecondSection = () => {
             trigger: stickyContainer.current,
             start: isDesktop ? "top top" : "-=50%",
             end: isDesktop ? "+=200%" : "+=50%",
-            scrub: isDesktop ? 2 : false,
+            scrub: isDesktop,
             pin: isDesktop,
             pinSpacing: true,
           },
@@ -149,7 +149,7 @@ const SecondSection = () => {
             })
 
             .to(".g-img3", {
-              marginTop: "0%",
+              // marginTop: "30%",
               // clipPath: "inset(50% 28% 0% 28% round 50% 50% 12px 12px)",
               ease: "none",
               duration: 2,
@@ -252,7 +252,7 @@ const SecondSection = () => {
       <div className="cursor" />
 
       {/* ── Sección principal ─────────────────────────────────────────── */}
-      <main className='img-overlay w-full h-[80vh] md:min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed z-10'>
+      <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed z-10'>
         {/* Texto */}
         <section className="w-full h-[30vh] items-center flex justify-center flex-col overflow-hidden">
           <h1 className="h1_text font-voyager tracking-wide text-stone-200 lg:text-6xl md:text-3xl text-xl text-center">

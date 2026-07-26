@@ -68,10 +68,21 @@ const ParallexPhoto = () => {
     const totalWordsForTitle = titleHeroSplit.words.length;
     const totalWords = heroCopySplit.words.length;
 
-    const mm = gsap.matchMedia();
+   const mm = gsap.matchMedia();
+
+mm.add(
+  {
+    isDesktop: "(min-width: 769px)",
+    isMobile: "(max-width: 768px)",
+  },
+  (context) => {
+    const { isDesktop, isMobile } = context.conditions as {
+      isDesktop: boolean;
+      isMobile: boolean;
+    };
 
     // ── Desktop ──────────────────────────────────────────────────────────────
-    mm.add("(min-width: 769px)", () => {
+    if (isDesktop) {
       const finalImgW = window.innerWidth * 0.8;
       const finalImgH = window.innerHeight * 0.8;
       const initialH1Scale = 400 / finalImgW;
@@ -86,77 +97,72 @@ const ParallexPhoto = () => {
         height: 400,
         borderRadius: 10,
       });
+
       gsap.set(".hero-header", {
         xPercent: -50,
         yPercent: -50,
         scale: initialH1Scale,
         opacity: 0,
       });
+
       gsap.set(".hero-copy", { x: copyStart.x, y: copyStart.y, opacity: 0 });
       gsap.set(".hero-copy h3", { opacity: 1 });
+
       heroCopySplit.words.forEach((w) => gsap.set(w, { opacity: 0 }));
       titleHeroSplit.words.forEach((w) => gsap.set(w, { opacity: 0 }));
 
-      const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (
-        v: number,
-      ) => void;
-      const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (
-        v: number,
-      ) => void;
-      const setImgR = gsap.quickSetter(".hero-img", "borderRadius", "px") as (
-        v: number,
-      ) => void;
-      const setH1ContainerOp = gsap.quickSetter(".hero-header", "opacity") as (
-        v: number,
-      ) => void;
-      const setH1Scale = gsap.quickSetter(".hero-header", "scale") as (
-        v: number,
-      ) => void;
-      const setCopyX = gsap.quickSetter(".hero-copy", "x", "px") as (
-        v: number,
-      ) => void;
-      const setCopyY = gsap.quickSetter(".hero-copy", "y", "px") as (
-        v: number,
-      ) => void;
-      const setCopyOp = gsap.quickSetter(".hero-copy", "opacity") as (
-        v: number,
-      ) => void;
+      const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (v: number) => void;
+      const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (v: number) => void;
+      const setImgR = gsap.quickSetter(".hero-img", "borderRadius", "px") as (v: number) => void;
+
+      const setH1ContainerOp = gsap.quickSetter(".hero-header", "opacity") as (v: number) => void;
+      const setH1Scale = gsap.quickSetter(".hero-header", "scale") as (v: number) => void;
+
+      const setCopyX = gsap.quickSetter(".hero-copy", "x", "px") as (v: number) => void;
+      const setCopyY = gsap.quickSetter(".hero-copy", "y", "px") as (v: number) => void;
+      const setCopyOp = gsap.quickSetter(".hero-copy", "opacity") as (v: number) => void;
 
       const st = ScrollTrigger.create({
         trigger: ".hero-parallex",
         start: "top top",
         end: `+=${window.innerHeight * 1.5}`,
-        pin: true,
-        pinSpacing: true,
+        pin: isDesktop,
+        pinSpacing: isDesktop,
+        scrub: isDesktop ? 2 : false,
+
         onUpdate: ({ progress: p }) => {
           const copyP = Math.max(0, Math.min((p - 0.05) / 0.45, 1));
+
           setCopyX(gsap.utils.interpolate(copyStart.x, copyEnd.x, copyP));
           setCopyY(gsap.utils.interpolate(copyStart.y, copyEnd.y, copyP));
           setCopyOp(copyP);
 
           const wordP = Math.max(0, Math.min((p - 0.05) / 0.35, 1));
+
           heroCopySplit.words.forEach((word, i) => {
             const wOpacity = Math.max(
               0,
-              Math.min((wordP - i / totalWords) / (1 / totalWords), 1),
+              Math.min((wordP - i / totalWords) / (1 / totalWords), 1)
             );
+
             gsap.set(word, { opacity: wOpacity });
           });
 
           const h1P = Math.max(0, Math.min((p - 0.2) / 0.45, 1));
+
           setH1ContainerOp(h1P);
+
           titleHeroSplit.words.forEach((word, i) => {
             const wOpacity = Math.max(
               0,
-              Math.min(
-                (h1P - i / totalWordsForTitle) / (1 / totalWordsForTitle),
-                1,
-              ),
+              Math.min((h1P - i / totalWordsForTitle) / (1 / totalWordsForTitle), 1)
             );
+
             gsap.set(word, { opacity: wOpacity });
           });
 
           const imgP = Math.max(0, Math.min((p - 0.65) / 0.35, 1));
+
           setImgW(gsap.utils.interpolate(400, finalImgW, imgP));
           setImgH(gsap.utils.interpolate(400, finalImgH, imgP));
           setImgR(gsap.utils.interpolate(0, 10, imgP));
@@ -165,8 +171,56 @@ const ParallexPhoto = () => {
       });
 
       return () => st.kill();
-    });
-    
+    }
+
+    // ── Mobile ───────────────────────────────────────────────────────────────
+    if (isMobile) {
+      const finalImgW = window.innerWidth * 0.95;
+      const finalImgH = window.innerHeight * 0.6;
+
+      gsap.set(".hero-img", {
+        xPercent: -50,
+        yPercent: -50,
+        width: 300,
+        height: 300,
+        borderRadius: 0,
+      });
+
+      gsap.set(".hero-header", {
+        xPercent: -50,
+        yPercent: -50,
+      });
+
+      gsap.set(".hero-copy h3", {
+        opacity: 100,
+      });
+
+      const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (v: number) => void;
+      const setImgH = gsap.quickSetter(".hero-img", "height", "px") as (v: number) => void;
+      const setHdrOp = gsap.quickSetter(".hero-header", "opacity") as (v: number) => void;
+
+      const st = ScrollTrigger.create({
+        trigger: ".hero-parallex",
+        start: "top top",
+        end: `+=${window.innerHeight * 1.5}`,
+        pin: isDesktop,
+        pinSpacing: isDesktop,
+        scrub: isDesktop ? 1 : false,
+
+        onUpdate: ({ progress: p }) => {
+          setHdrOp(Math.max(0, 1 - p / 0.4));
+
+          const imgP = Math.max(0, Math.min((p - 0.4) / 0.6, 1));
+
+          setImgW(gsap.utils.interpolate(300, finalImgW, imgP));
+          setImgH(gsap.utils.interpolate(300, finalImgH, imgP));
+        },
+      });
+
+      return () => st.kill();
+    }
+  }
+);
 
     // ── Móvil ────────────────────────────────────────────────────────────────
     mm.add("(max-width: 768px)", () => {
@@ -181,7 +235,7 @@ const ParallexPhoto = () => {
         borderRadius: 0,
       });
       gsap.set(".hero-header", { xPercent: -50, yPercent: -50 });
-      gsap.set(".hero-copy h3", { opacity: 0 });
+      gsap.set(".hero-copy h3", { opacity: 100 });
 
       const setImgW = gsap.quickSetter(".hero-img", "width", "px") as (
         v: number,

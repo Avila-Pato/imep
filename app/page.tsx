@@ -145,7 +145,7 @@ export default function Home() {
             width={1100}
             height={1100}
             loading="eager"
-            className="object-cover scale-175 -translate-y-1/2"
+            className="object-cover scale-175 md:scale-145 -translate-y-1/2 md:-translate-y-[5%] "
           />
           <div className="bee absolute xl:top-[56%]  lg:top-[23%] 
           md:top-[20%] md:left-[40%] left-[-5%] top-[-55%] lg:left-[43%] 
