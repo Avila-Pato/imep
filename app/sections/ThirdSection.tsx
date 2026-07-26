@@ -328,7 +328,7 @@ const ParallexPhoto = () => {
 
   return (
     <main
-      className="relative w-full bg-cover bg-center bg-local"
+      className="relative w-full bg-cover bg-center bg-fixed"
       style={{ backgroundImage: "url('/w-bg.jpg')" }}
     >
       {/* Ref del Spotlight */}
