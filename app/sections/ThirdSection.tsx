@@ -207,7 +207,7 @@ const ParallexPhoto = () => {
 
             const setImgW = gsap.quickSetter(".hero-img", "width", "px");
             const setImgH = gsap.quickSetter(".hero-img", "height", "px");
-            const setHdrOp = gsap.quickSetter(".hero-header", "opacity");
+            // const setHdrOp = gsap.quickSetter(".hero-header", "opacity");
 
             ScrollTrigger.create({
               trigger: ".hero-parallex",
@@ -216,7 +216,7 @@ const ParallexPhoto = () => {
               scrub: true, // Para que la escala siga suavemente al dedo,
               pin: false,
               pinSpacing: false,
-              invalidateOnRefresh: true,
+              invalidateOnRefresh: false, // Evita reseteos en resize/scroll back
               onUpdate: ({ progress: p }) => {
                 // 1. La imagen se agranda de INMEDIATO (de p = 0 a p = 0.8)
                 const imgP = Math.max(0, Math.min(p / 0.8, 1));
