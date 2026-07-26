@@ -179,10 +179,14 @@
     display: none;
   }
 
-  .gallery-section {
+   .gallery-section {
     overflow: hidden;
     }
-  
+
+  .hero-img {
+    overflow: visible;
+  }
+
 }
 
 .gallery-grid > div {
@@ -495,11 +499,14 @@
 
 @media (max-width: 1000px) {
   .h1-parallex {
-    font-size: 3rem;
+    font-size: 1rem;
+    text-align: center;
   }
   h3 {
-    font-size: 2rem;
+    font-size: 1rem;
+    text-align: center;
   }
+
 
   .hero {
     z-index: 2;
