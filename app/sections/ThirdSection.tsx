@@ -366,7 +366,7 @@ const ParallexPhoto = () => {
         </div>
 
         <div className="hero-copy md:absolute">
-          <h3 className="h3-parallex font-luxury">
+          <h3 className="h3-parallex font-luxury ">
             Iglesia misión evangélica pentecostal, fundada con la visión de ser
             un templo de adoración, enseñanza y comunión para la gloria de Dios.
           </h3>
