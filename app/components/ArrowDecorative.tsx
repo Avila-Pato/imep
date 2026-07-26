@@ -4,7 +4,7 @@ import Image from "next/image";
 const ArrowDecorative = () => {
   return (
     <div className="relative w-full   z-2">
-      <div className="absolute -top-4 left-1/2 -translate-x-1/2 -translate-y-1/2 z-2 max-w-full">
+      <div className="absolute -top-4 left-1/2 -translate-x-1/2 -translate-y-1/2 z-2 max-w-full hidden md:block">
         <Image
           src="/star-mask.svg"
           alt="star mask"
