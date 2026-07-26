@@ -65,9 +65,9 @@ const SecondSection = () => {
             .to(".g-img6", { x: 160, y: 80, ease: "none", duration: 1 }, 0)
             .to(".g-img7", { x: 150, y: -60, ease: "none", duration: 1 }, 0)
             .to(".g-img3", {
-              clipPath: isMobile 
-      ? "inset(20% 15% 0% 15% round 999px 999px 12px 12px)" 
-      : "inset(40% 38% 0% 38% round 999px 999px 12px 12px)",
+              clipPath: isMobile
+                ? "inset(20% 15% 0% 15% round 999px 999px 12px 12px)"
+                : "inset(40% 38% 0% 38% round 999px 999px 12px 12px)",
               ease: "none",
               duration: 2,
             })
@@ -120,8 +120,9 @@ const SecondSection = () => {
             );
         } else {
           // ── MOBILE ANIMATION ────────────────────────────────────────────
+          gsap.set(".g-img3", { perspective: 800 });
           tl.to(".g-img3", {
-            scale: 0.8,
+            scale: 1.1,
             ease: "none",
             duration: 1,
             transformOrigin: "center top",
@@ -138,23 +139,32 @@ const SecondSection = () => {
               { opacity: 0, ease: "none", duration: 0.4 },
               0,
             )
-            .to(".btn-position", {
-              marginTop: "95%",
-              marginLeft: "25%",
-              ease: "none",
-              duration: 2,
-              width: "50%",
-              height: "50px",
-              gap: "10px",
-            })
+            // .to(".btn-position", {
+            //   marginTop: "95%",
+            //   marginLeft: "25%",
+            //   ease: "power1.inOut",
+            //   duration: 1,
+            //   width: "50%",
+            //   height: "50px",
+            //   gap: "50px",
+            // })
 
             .to(".g-img3", {
               // marginTop: "30%",
               // clipPath: "inset(50% 28% 0% 28% round 50% 50% 12px 12px)",
+              objectFit: "cover",
               ease: "none",
               duration: 2,
-              objectFit: "cover",
             });
+            // Posiciones de los botones
+          gsap.set(".btn-position", {
+            marginTop: "105%",
+            marginLeft: "25%",
+            width: "50%",
+            height: "50px",
+            gap: "50px",
+            zIndex: 100,
+          });
         }
       },
     );
@@ -326,22 +336,47 @@ const SecondSection = () => {
                     const slides =
                       document.querySelectorAll<HTMLElement>(".gallery-slide");
                     gsap.killTweensOf([slides[prev], slides[next]]);
-                    gsap.set(slides[next], {
-                      x: "100%",
-                      opacity: 1,
-                      clipPath: "none",
-                      scale: 1,
-                    });
-                    gsap.to(slides[prev], {
-                      x: "-100%",
-                      duration: 0.55,
-                      ease: "power2.inOut",
-                    });
-                    gsap.to(slides[next], {
-                      x: "0%",
-                      duration: 0.55,
-                      ease: "power2.inOut",
-                    });
+                    if (window.innerWidth < 768) {
+                      const dir = -1;
+                      gsap.set(slides[next], {
+                        rotateY: 90,
+                        scale: 0.6,
+                        opacity: 1,
+                        clipPath: "none",
+                        x: "0%",
+                        transformOrigin: "center center",
+                      });
+                      gsap.to(slides[prev], {
+                        rotateY: dir * 75,
+                        scale: 0.6,
+                        opacity: 0,
+                        ease: "power2.in",
+                        duration: 0.3,
+                      });
+                      gsap.to(slides[next], {
+                        rotateY: 0,
+                        scale: 1,
+                        ease: "power2.out",
+                        duration: 0.3,
+                      });
+                    } else {
+                      gsap.set(slides[next], {
+                        x: "100%",
+                        opacity: 1,
+                        clipPath: "none",
+                        scale: 1,
+                      });
+                      gsap.to(slides[prev], {
+                        x: "-100%",
+                        duration: 0.55,
+                        ease: "power2.inOut",
+                      });
+                      gsap.to(slides[next], {
+                        x: "0%",
+                        duration: 0.55,
+                        ease: "power2.inOut",
+                      });
+                    }
                     activeIdxRef.current = next;
                   }}
                 >
@@ -367,22 +402,47 @@ const SecondSection = () => {
                     const slides =
                       document.querySelectorAll<HTMLElement>(".gallery-slide");
                     gsap.killTweensOf([slides[prev], slides[next]]);
-                    gsap.set(slides[next], {
-                      x: "-100%",
-                      opacity: 1,
-                      clipPath: "none",
-                      scale: 1,
-                    });
-                    gsap.to(slides[prev], {
-                      x: "100%",
-                      duration: 0.55,
-                      ease: "power2.inOut",
-                    });
-                    gsap.to(slides[next], {
-                      x: "0%",
-                      duration: 0.55,
-                      ease: "power2.inOut",
-                    });
+                    if (window.innerWidth < 768) {
+                      const dir = 1;
+                      gsap.set(slides[next], {
+                        rotateY: -90,
+                        scale: 0.6,
+                        opacity: 1,
+                        clipPath: "none",
+                        x: "0%",
+                        transformOrigin: "center center",
+                      });
+                      gsap.to(slides[prev], {
+                        rotateY: dir * 75,
+                        scale: 0.6,
+                        opacity: 0,
+                        ease: "power2.in",
+                        duration: 0.3,
+                      });
+                      gsap.to(slides[next], {
+                        rotateY: 0,
+                        scale: 1,
+                        ease: "power2.out",
+                        duration: 0.3,
+                      });
+                    } else {
+                      gsap.set(slides[next], {
+                        x: "-100%",
+                        opacity: 1,
+                        clipPath: "none",
+                        scale: 1,
+                      });
+                      gsap.to(slides[prev], {
+                        x: "100%",
+                        duration: 0.55,
+                        ease: "power2.inOut",
+                      });
+                      gsap.to(slides[next], {
+                        x: "0%",
+                        duration: 0.55,
+                        ease: "power2.inOut",
+                      });
+                    }
                     activeIdxRef.current = next;
                   }}
                 >
