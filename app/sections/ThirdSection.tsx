@@ -212,7 +212,7 @@ const ParallexPhoto = () => {
             ScrollTrigger.create({
               trigger: ".hero-parallex",
               start: "top 80%", // Empieza a agrandarse APENAS asoma la sección
-              end: "top 10%", // Termina de agrandarse ANTES de salir
+              // end: "top 10%", // Termina de agrandarse ANTES de salir
               scrub: true, // Para que la escala siga suavemente al dedo,
               pin: false,
               pinSpacing: false,
@@ -328,7 +328,7 @@ const ParallexPhoto = () => {
 
   return (
     <main
-      className="relative w-full bg-cover bg-center bg-fixed"
+      className="relative w-full bg-cover bg-center bg-local"
       style={{ backgroundImage: "url('/w-bg.jpg')" }}
     >
       {/* Ref del Spotlight */}
