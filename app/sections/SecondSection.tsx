@@ -252,7 +252,7 @@ const SecondSection = () => {
       <div className="cursor" />
 
       {/* ── Sección principal ─────────────────────────────────────────── */}
-      <main className='img-overlay w-full min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed z-10'>
+      <main className='img-overlay w-full h-[80vh] md:min-h-screen bg-[url("/assets/stone-wall.webp")] bg-cover bg-center bg-fixed z-10'>
         {/* Texto */}
         <section className="w-full h-[30vh] items-center flex justify-center flex-col overflow-hidden">
           <h1 className="h1_text font-voyager tracking-wide text-stone-200 lg:text-6xl md:text-3xl text-xl text-center">
