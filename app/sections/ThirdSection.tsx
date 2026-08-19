@@ -9,6 +9,62 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
+// Costura decorativa: aguja/arco de piedra que asoma entre el fondo claro y la sección oscura.
+// El clip-path (en unidades 0–1 del propio elemento) recorta tanto la textura de piedra
+// como la máscara de "linterna" a la silueta de la curva, sin tocar los lados color crema.
+const SeamArch = ({ flip = false }: { flip?: boolean }) => {
+  const arcRef = useRef<HTMLDivElement>(null);
+  const clipId = flip ? "archClipTop" : "archClipBottom";
+  const clipPath = flip
+    ? "M0,1 H1 V0.7083 C0.75,0.7083 0.6806,0 0.5,0 C0.3194,0 0.25,0.7083 0,0.7083 Z"
+    : "M0,0 H1 V0.2917 C0.75,0.2917 0.6806,1 0.5,1 C0.3194,1 0.25,0.2917 0,0.2917 Z";
+
+  // Misma lógica de "linterna" que el resto de section-about, pero calculada
+  // localmente para que la máscara quede alineada con este elemento.
+  useEffect(() => {
+    const el = arcRef.current;
+    if (!el) return;
+
+    const handleMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--x", `${e.clientX - r.left}px`);
+      el.style.setProperty("--y", `${e.clientY - r.top}px`);
+    };
+
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
+  return (
+    <div
+      ref={arcRef}
+      className="seam-arch relative h-28 w-full overflow-hidden bg-cover bg-center bg-fixed md:h-44"
+      style={{ backgroundImage: "url('/w-bg.jpg')" }}
+    >
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <clipPath id={clipId} clipPathUnits="objectBoundingBox">
+            <path d={clipPath} />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/assets/stone-wall.webp')",
+          clipPath: `url(#${clipId})`,
+        }}
+      />
+
+      <div
+        className="seam-arch-mask pointer-events-none absolute inset-0"
+        style={{ clipPath: `url(#${clipId})` }}
+      />
+    </div>
+  );
+};
+
 const ParallexPhoto = () => {
   const spotlightRef = useRef<HTMLDivElement>(null);
 
@@ -386,6 +442,8 @@ const ParallexPhoto = () => {
 
       <div className="relative overflow-hidden">
         <section className="about-parallex section-parallex section-about img-background">
+          <SeamArch flip />
+
           <div className="about-header z-10">
             <h3 className="about-subtitle font-luxury">
               Un lugar para crecer en la palabra, servir con amor y vivir en
@@ -449,6 +507,8 @@ const ParallexPhoto = () => {
               />
             </div>
           </div>
+
+          <SeamArch />
         </section>
       </div>
     </main>
