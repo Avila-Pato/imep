@@ -32,6 +32,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html
       lang="en"
       className={`${luxurious.variable} ${pinyon.variable} ${voyage.variable} h-full antialiased`}
+      suppressHydrationWarning
+
     >
       <body className="min-h-full flex flex-col">
         {/* <RevealLayout> */}

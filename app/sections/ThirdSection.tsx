@@ -104,9 +104,9 @@ const ParallexPhoto = () => {
             gsap.set(".hero-img", {
               xPercent: -50,
               yPercent: -50,
-              width: 280,
-              height: 280,
-              borderRadius: 10,
+              width: 400,
+              height: 400,
+              borderRadius: 0,
             });
 
             gsap.set(".hero-header", {
@@ -193,8 +193,8 @@ const ParallexPhoto = () => {
             gsap.set(".hero-img", {
               xPercent: -50,
               yPercent: -10,
-              width: 300,
-              height: 300,
+              width: 280,
+              height: 280,
               borderRadius: 0,
             });
             gsap.set(".hero-header", { xPercent: -50, yPercent: -220, y: -50 });

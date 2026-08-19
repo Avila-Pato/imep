@@ -68,12 +68,13 @@ const FourthSection = () => {
         <div className="absolute left-12 top-22 z-20 w-full max-w-sm font-luxury flex flex-col gap-3">
           
           {/* 1. CAJA SUPERIOR: Badge + Título */}
-          <div className="flex items-center justify-start gap-2 rounded-lg bg-[#C7C8A3]/30 px-3 py-2 backdrop-blur-xs border border-white/10 shadow-lg"
+          <div className="flex items-center justify-start gap-2 rounded-lg bg-[#C2C8A3]/30
+           px-3 py-2 backdrop-blur-xs border border-white/10 shadow-lg"
             style={{ padding: "3px"}}
           >
-            <span className="flex items-center gap-1.5 rounded bg-lime-500/20 px-2 py-0.5 text-[13px]
-             font-semibold text-lime-400 border border-lime-400/30 shrink-0">
-              <span className="h-2 w-2 rounded-full bg-lime-400 animate-pulse" />
+            <span className="flex  items-center gap-1.5 rounded bg-lime-900/20  px-2 py-0.5 text-[13px]
+             font-semibold text-lime-400 border border-lime-400/30 shrink-0 " style={{ padding: "3px"}} >
+              <span className="h-2 w-2 rounded-full bg-lime-400 animate-pulse " />
               {activeItem.badge}
             </span>
             <h2 className="text-xs font-bold tracking-widest text-white uppercase truncate">
@@ -82,7 +83,8 @@ const FourthSection = () => {
           </div>
 
           {/* 2. CAJA INFERIOR: Descripción con padding p-6 para dar espacio al texto */}
-          <div className="rounded-2xl bg-[#C7C8A3]/30  backdrop-blur-xs border border-white/10 shadow-lg " style={{ padding: "0.9rem"}}>
+          <div className="rounded-2xl bg-[#C7C8A3]/30  backdrop-blur-xs border border-white/10 shadow-lg"
+           style={{ padding: "0.9rem"}}>
             <p className="text-[15px] leading-relaxed text-slate-100">
               {activeItem.description}
             </p>
@@ -121,16 +123,17 @@ const FourthSection = () => {
         </div>
 
         {/* MENÚ LATERAL IZQUIERDO */}
-        <aside className="absolute left-6 top-1/2 flex -translate-y-1/2 flex-col gap-6 rounded-full bg-black/30 p-3 backdrop-blur-md z-10">
+        <aside className="absolute left-6 top-1/2 flex -translate-y-1/2 flex-col gap-6 rounded-full
+         bg-black/30 w-4 h-20 backdrop-blur-md z-10 ">
           <button className="flex flex-col items-center text-xs tracking-widest text-slate-200 hover:text-white">
-            <span>S</span><span>O</span><span>U</span><span>N</span><span>D</span>
+            <span>J</span><span>E</span><span>S</span><span>U</span><span>S</span>
           </button>
         </aside>
 
         {/* FOOTER */}
         <footer className="absolute bottom-6 left-12 text-sm tracking-widest text-slate-200 z-10">
           <p>
-            Sede de la organización de investigación aeroespacial de Kioto —{" "}
+            Iglesia Mision Evangelica Pentecostal —{" "}
             <span className="font-bold text-lime-400">{activeItem.location}</span>
           </p>
         </footer>
