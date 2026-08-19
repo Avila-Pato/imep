@@ -449,7 +449,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  padding: 4rem 4rem 2rem;
+  padding: 1rem 4rem 2rem;
   gap: 1.5rem;
    /* background: url("/Line.png") center center / cover no-repeat;
   background-attachment: fixed; */
@@ -472,6 +472,8 @@
   color: #f8f4ee;
   max-width: 60ch;
   padding: 1rem 2rem;
+  align-self: flex-start;
+  margin-top: -2rem;
 }
 
 .about-description {
