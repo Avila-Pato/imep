@@ -114,8 +114,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text_2 absolute lg:top-[-2%]
-       xl:top-[10%] md:top-[2%]
+      <div className=" p_text_2 absolute lg:top-[6%]
+       xl:top-[16%] md:top-[8%]
        top-[20%] left-[24%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%] 
        z-5
