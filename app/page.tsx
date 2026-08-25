@@ -119,7 +119,7 @@ export default function Home() {
        top-[20%] left-[24%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%] 
        z-5
-       text-stone-200  lg:text-[8rem] 
+       text-stone-200  lg:text-[6rem] 
        md:text-[6rem] sm:text-[3rem] text-[2.3rem]
         font-luxury leading-none
        transform scale-x-[1.2]
