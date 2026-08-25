@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className={`flex items-center gap-2 transition-colors duration-300 ${scrolled ? "text-neutral-900" : "text-white"}`}>
           <Image alt="IMEP logo" width={100} height={100} src="/logo3.png"
             className="w-9 h-9 md:w-12.5 md:h-12.5" />
-          <h2 className="text-lg md:text-3xl font-bold tracking-widest uppercase leading-none">
+          <h2 className="text-lg md:text-3xl font-semibold tracking-normal uppercase leading-none">
             IMEP
           </h2>
         </div>

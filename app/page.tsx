@@ -124,7 +124,7 @@ export default function Home() {
         font-luxury leading-none
        transform scale-x-[1.2]
        origin-left tracking-wide
-        [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]   ">
+        [text-shadow:2px_4px_12px_rgba(0,0,0,0.5)]">
         <h1>
           Iremos
           <br />
