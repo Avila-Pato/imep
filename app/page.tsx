@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ArrowDecorative from "./components/ArrowDecorative";
 import ThirdSection from "./sections/ThirdSection";
 import FourthSection from "./sections/FourthSection";
+import FifthSection from "./sections/FifthSection";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
@@ -113,12 +114,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" p_text_2 absolute lg:top-[-10%] 
-       xl:top-[3%] md:top-[-5%] 
+      <div className=" p_text_2 absolute lg:top-[-2%]
+       xl:top-[10%] md:top-[2%]
        top-[20%] left-[24%] sm:left-[30%] sm:top-[50%]
        xl:left-[37%] 2xl:left-[40%] 
        z-5
-       text-stone-200 xl:text-[9rem] lg:text-[8rem] 
+       text-stone-200  lg:text-[8rem] 
        md:text-[6rem] sm:text-[3rem] text-[2.3rem]
         font-luxury leading-none
        transform scale-x-[1.2]
@@ -170,6 +171,8 @@ export default function Home() {
       {/* ── Tercera sección ──────────────────────────────────────────── */}
       <ThirdSection />
       {/* ──── Cuarta sección ───────────────────────────────────────── */}
+      <FifthSection />
+      {/* ─── Quinta sección ───────────────────────────────────────── */}
       <FourthSection />
       {/* Seccion del MAPA */}
     </>
